@@ -15,8 +15,13 @@
     }
 
     function saveCategoryName(id: string, e) {
-        e.target.innerText = text_sanitizer(e.target.innerText,'Kategorie');
-        $todo_manager.updateCategoryName(id, e.target.innerText.trim());
+        let text = text_sanitizer(e.target.innerText, 'Kategorie');
+        if ($todo_manager.existsCategoryName(text)) {
+            $todo_manager.updateCategoryName(id, 'Kategorie');
+            e.target.innerText = 'Kategorie';
+        } else {
+            $todo_manager.updateCategoryName(id, text);
+        }
         $todo_manager = $todo_manager;
     }
 
@@ -33,7 +38,7 @@
     function saveByReturn(id: string, e) {
         if (e.keyCode === 13 || e.keyCode === 10) {
             e.target.blur();
-            e.stopPropagation();
+            // e.stopPropagation();
             saveCategoryName(id, e);
         }
     }
@@ -44,15 +49,17 @@
      on:click={()=>toggleCategorySelected(item.id)}
      class:is-light={!item.selected}>
     <span class="namefield"
-          contenteditable="true"
-          on:click={removeText}
+          contenteditable={item.name !== 'Allgemein'}
+          on:focus={removeText}
           on:keypress={(event)=>saveByReturn(item.id,event)}
           on:focusout={(event)=>saveCategoryName(item.id,event)}
     >{item.name}</span>
+    {#if item.name !== 'Allgemein'}
     <span class="delete"
           on:click={()=>deleteCategory(item.id)}
           on:click|stopPropagation>
     </span>
+    {/if}
 </div>
 
 
@@ -66,6 +73,7 @@
     }
 
     .namefield {
+        min-width: 40px;
         cursor: text;
         outline: none;
     }

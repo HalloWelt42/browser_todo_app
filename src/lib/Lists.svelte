@@ -8,27 +8,15 @@
 <div class="lists">
 
     {#each $todo_manager.getCategories() as item}
-
-        {#if item.name === 'general'}
-            <div class="list button is-link">{item.name}</div>
-        {:else}
-            <CategoryButton {item}/>
-        {/if}
-
+        <CategoryButton {item}/>
     {/each}
 </div>
 
 
 <style>
 
-    .lists, .list {
+    .lists {
         display: flex;
     }
-
-    .list {
-        margin: 5px;
-    }
-
-
 
 </style>

@@ -14,7 +14,7 @@
     $todo_manager = new TodoListController();
     $todo_manager.addCategory({
         id: v4(),
-        name: 'general',
+        name: 'Allgemein',
         selected: true
     });
 
@@ -85,7 +85,7 @@
         background-color: hsla(0, 100%, 100%, 1);
         position: fixed;
         width: 100%;
-        box-shadow: 0px 5px 50px gray;
+        box-shadow: 0 5px 50px gray;
         top: 0;
     }
 

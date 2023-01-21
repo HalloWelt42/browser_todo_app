@@ -9,8 +9,9 @@
     }
 
     function saveTodoName(id: string, e) {
-        e.target.innerText = text_sanitizer(e.target.innerText,'Aufgabe');
-        $todo_manager.updateTodoName(id, e.target.innerText.trim());
+        let text = text_sanitizer(e.target.innerText,'Aufgabe');
+        $todo_manager.updateTodoName(id, text);
+        e.target.innerText = 'Aufgabe';
         $todo_manager = $todo_manager;
     }
 

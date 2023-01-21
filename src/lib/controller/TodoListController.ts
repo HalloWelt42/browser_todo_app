@@ -25,6 +25,13 @@ class TodoListController {
         this.categories[index].name = name;
     }
 
+    existsCategoryName(name: string): boolean {
+        let index = this.categories.findIndex((category) => {
+            return category.name === name;
+        });
+        return index !== -1;
+    }
+
     deleteCategory(id: string): void {
         this.categories = this.categories.filter((category) => {
             return category.id !== id;

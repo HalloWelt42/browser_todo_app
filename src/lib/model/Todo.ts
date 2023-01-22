@@ -1,10 +1,11 @@
 import type {Status} from "./Status";
-import type {Category} from "./Category";
+import type {Priority} from "./Priority";
 
 interface Todo {
     id: string;
     name: string;
     status: Status;
+    // priority: Priority
     categories: string[]
 }
 

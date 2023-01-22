@@ -15,33 +15,25 @@
     }
 
     function saveCategoryName(id: string, e) {
-        let text = text_sanitizer(e.target.innerText, 'Kategorie');
-        if ($todo_manager.existsCategoryName(text)) {
-            $todo_manager.updateCategoryName(id, 'Kategorie');
-            e.target.innerText = 'Kategorie';
-        } else {
-            $todo_manager.updateCategoryName(id, text);
-        }
+        let text = text_sanitizer(e.target.innerHTML, 'Kategorie');
+        $todo_manager.updateCategoryName(id, text);
         $todo_manager = $todo_manager;
     }
 
-    function removeText(e) {
-        if (
-            e.target.innerText === 'Kategorie'
-            // || e.target.innerText === ''
-        ) {
-            e.target.innerText = '';
+    function clearInput(id, e) {
+        let text = e.target.innerHTML;
+        if (text === 'Kategorie') {
+            e.target.innerHTML = '';
         }
-        $todo_manager = $todo_manager;
     }
 
     function saveByReturn(id: string, e) {
-        if (e.keyCode === 13 || e.keyCode === 10) {
-            e.target.blur();
-            // e.stopPropagation();
+        if (e.keyCode === 13) {
             saveCategoryName(id, e);
+            e.target.blur();
         }
     }
+
 
 </script>
 
@@ -49,11 +41,14 @@
      on:click={()=>toggleCategorySelected(item.id)}
      class:is-light={!item.selected}>
     <span class="namefield"
-          contenteditable={item.name !== 'Allgemein'}
-          on:focus={removeText}
+          contenteditable="true"
           on:keypress={(event)=>saveByReturn(item.id,event)}
           on:focusout={(event)=>saveCategoryName(item.id,event)}
-    >{item.name}</span>
+          on:click={(event)=>clearInput(item.id,event)}
+          on:focus={(event)=>clearInput(item.id,event)}
+          bind:innerHTML={item.name}
+          on:click|stopPropagation
+    ></span>
     {#if item.name !== 'Allgemein'}
     <span class="delete"
           on:click={()=>deleteCategory(item.id)}

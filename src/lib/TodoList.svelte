@@ -9,9 +9,8 @@
     }
 
     function saveTodoName(id: string, e) {
-        let text = text_sanitizer(e.target.innerText,'Aufgabe');
+        let text = text_sanitizer(e.target.innerHTML, 'Aufgabe');
         $todo_manager.updateTodoName(id, text);
-        e.target.innerText = 'Aufgabe';
         $todo_manager = $todo_manager;
     }
 
@@ -19,22 +18,16 @@
         $todo_manager.deleteTodo(id);
         $todo_manager = $todo_manager;
     }
-
-    function removeText(e) {
-        if(
-               e.target.innerText === 'Aufgabe'
-            || e.target.innerText === 'Der Name der Aufgabe darf nicht leer sein!'
-        ){
-            e.target.innerText = '';
+    function clearInput(id, e) {
+        let text = e.target.innerHTML;
+        if (text === 'Aufgabe') {
+            e.target.innerHTML = '';
         }
-        $todo_manager = $todo_manager;
     }
-    
     function saveByReturn(id: string, e) {
-        if(e.keyCode === 13 || e.keyCode === 10){
-           e.target.blur();
-           e.stopPropagation();
-           saveTodoName(id,e);
+        if (e.keyCode === 13) {
+            saveTodoName(id, e);
+            e.target.blur();
         }
     }
 
@@ -47,7 +40,6 @@
             <thead>
             <th></th>
             <th class="has-text-grey-light">Aufgaben</th>
-            <th class="has-text-grey-light">Kategorien</th>
             <th></th>
             </thead>
             {#each $todo_manager.getTodos() as item}
@@ -72,21 +64,18 @@
                         <td class="todo">
                             <div class="todo-name"
                                  contenteditable="true"
-                                 on:focus={removeText}
                                  on:keypress={(event)=>saveByReturn(item.id,event)}
                                  on:focusout={(event)=>saveTodoName(item.id,event)}
+                                 on:click={(event)=>clearInput(item.id,event)}
+                                 on:focus={(event)=>clearInput(item.id,event)}
                                  class:warning={item.name==='Der Name der Aufgabe darf nicht leer sein!'}
-                            >{item.name}</div>
-                        </td>
-                        <!--                -->
-                        <td class="has-text-grey-light">
-                            <!--{#each item.categories as id}-->
-                            {item.categories.length}
-                            <!--{$todo_manager.getCategoryName(id)}-->
-                            <!--{/each}-->
+                                 bind:innerHTML={item.name}
+                            ></div>
                         </td>
                         <!-- Options -->
-                        <td on:click={()=>deleteTodo(item.id)}>
+                        <td on:click={()=>deleteTodo(item.id)}
+                            on:click|stopPropagation
+                        >
                             <button class="is-medium delete"></button>
                         </td>
                     </tr>

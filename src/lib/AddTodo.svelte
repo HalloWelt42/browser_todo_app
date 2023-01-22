@@ -7,7 +7,7 @@
             id: v4(),
             name: 'Aufgabe',
             status: 'open',
-            categories:$todo_manager.getIdsFromCategories()
+            categories:[]
         });
         $todo_manager = $todo_manager;
     }
@@ -23,7 +23,7 @@
 </div>
 
 
-<style>
+<style lang="scss">
     .tool {
         display: flex;
     }

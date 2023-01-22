@@ -21,7 +21,9 @@
     let visibillity = false;
 
     $:{
-        console.log($todo_manager);
+        // console.log($todo_manager);
+        console.log($todo_manager.getTodos());
+        console.log($todo_manager.getCategories());
     }
 
 </script>
@@ -32,7 +34,7 @@
     <header>
         <div class="header-container">
             <ListToolbox/>
-            <Lists/>
+            <Lists />
         </div>
     </header>
     <main>

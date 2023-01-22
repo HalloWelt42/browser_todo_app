@@ -18,19 +18,20 @@
         $todo_manager.deleteTodo(id);
         $todo_manager = $todo_manager;
     }
+
     function clearInput(id, e) {
         let text = e.target.innerHTML;
         if (text === 'Aufgabe') {
             e.target.innerHTML = '';
         }
     }
+
     function saveByReturn(id: string, e) {
         if (e.keyCode === 13) {
             saveTodoName(id, e);
             e.target.blur();
         }
     }
-
 </script>
 
 

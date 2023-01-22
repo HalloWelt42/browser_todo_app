@@ -33,9 +33,8 @@
             e.target.blur();
         }
     }
-
-
 </script>
+
 
 <div class="list button is-link"
      on:click={()=>toggleCategorySelected(item.id)}

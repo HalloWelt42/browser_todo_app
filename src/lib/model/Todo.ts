@@ -5,7 +5,7 @@ interface Todo {
     id: string;
     name: string;
     status: Status;
-    categories?: string[]
+    categories: string[]
 }
 
 export type {Todo};

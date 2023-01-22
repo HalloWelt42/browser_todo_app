@@ -1,6 +1,7 @@
 import type {Todo} from "../model/Todo";
 import type {Category} from "../model/Category";
 import type {Status} from "../model/Status";
+import {todo_manager} from "../todo_manager";
 
 export {TodoListController}
 
@@ -8,10 +9,12 @@ class TodoListController {
 
     private todos: Todo[];
     private categories: Category[];
+    private default_category: string;
 
     constructor() {
         this.todos = [];
         this.categories = [];
+        this.default_category = 'Allgemein'
     }
 
     addCategory(category: Category): void {
@@ -53,11 +56,25 @@ class TodoListController {
     getIdsFromCategories(): string[] {
         let ids = [];
         this.categories.forEach((category) => {
-            if (category.selected === true) {
+            if (
+                    category.selected === true
+                ||  category.name === this.default_category
+            ) {
                 ids.push(category.id);
             }
         });
         return ids;
+    }
+
+    getIdFromCategory(name: string): string {
+        let id = '';
+        this.categories.forEach((category) => {
+            if (category.name === name) {
+                id = category.id;
+                return;
+            }
+        });
+        return id;
     }
 
     toggleTodoStatus(id: string) {
@@ -87,6 +104,7 @@ class TodoListController {
 
     addTodo(todo: Todo): void {
         // get all selected categories
+        todo.categories = this.getIdsFromCategories();
         this.todos.push(todo);
     }
 

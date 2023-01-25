@@ -3,6 +3,7 @@
     import CategoryButton from "./CategoryButton.svelte";
 </script>
 
+
 <div class="lists">
     {#each $todo_manager.getCategories() as item}
         <CategoryButton {item} />

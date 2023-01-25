@@ -36,7 +36,7 @@
 </script>
 
 
-<div class="list button is-link"
+<button class="list button is-link"
      on:click={()=>toggleCategorySelected(item.id)}
      class:is-light={!item.selected}>
     <span class="namefield"
@@ -52,7 +52,10 @@
           on:click={()=>deleteCategory(item.id)}
           on:click|stopPropagation>
     </span>
-</div>
+    <span class="badge">{$todo_manager.getTodosCountBy(item.id)}</span>
+
+</button>
+
 
 
 <style>
@@ -68,6 +71,12 @@
         min-width: 40px;
         cursor: text;
         outline: none;
+    }
+
+    .badge{
+        font-weight: bold;
+        font-size: 0.8em;
+        background-color: hsl(171, 100%, 41%);
     }
 
 </style>

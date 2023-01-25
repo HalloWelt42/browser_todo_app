@@ -6,6 +6,7 @@
             id: crypto.randomUUID(),
             name: 'Aufgabe',
             status: 'open',
+            priority: 'low',
             categories:[]
         });
         $todo_manager = $todo_manager;

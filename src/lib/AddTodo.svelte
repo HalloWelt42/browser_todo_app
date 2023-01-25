@@ -18,7 +18,15 @@
         <i class="fas fa-plus icon"></i>&nbsp;&nbsp;neue Aufgabe
     </div>
     <div class="tool button is-white has-text-grey">
-        ({$todo_manager.getCategoriesCount()}) für ausgewählte Kategorien
+        {#if $todo_manager.getCategoriesCount() === 0 }
+            ohne ausgewählte Kategorien
+        {/if}
+        {#if $todo_manager.getCategoriesCount() === 1 }
+            für eine ausgewählte Kategorie
+        {/if}
+        {#if $todo_manager.getCategoriesCount() > 1 }
+            für {$todo_manager.getCategoriesCount()} ausgewählte Kategorien
+        {/if}
     </div>
 </div>
 

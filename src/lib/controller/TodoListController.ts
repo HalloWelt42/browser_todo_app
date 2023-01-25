@@ -74,10 +74,7 @@ class TodoListController {
     getIdsFromCategories(): string[] {
         let ids = [];
         this.categories.forEach((category) => {
-            if (
-                category.selected === true
-                || category.name === this.default_category
-            ) {
+            if (category.selected === true) {
                 ids.push(category.id);
             }
         });

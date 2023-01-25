@@ -6,7 +6,6 @@
 
     import {todo_manager} from "./lib/todo_manager";
 
-
     import AddTodo from "./lib/AddTodo.svelte";
     import ModalDialog from "./lib/ModalDialog.svelte";
     import {TodoListController} from "./lib/controller/TodoListController";
@@ -17,9 +16,11 @@
     let current_state: string;
     let visibillity = false;
 
+    // Trigger
     $:{$todo_manager.saveTodo()}
 
 </script>
+
 
 <ModalDialog bind:visibillity/>
 

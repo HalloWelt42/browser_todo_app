@@ -5,7 +5,7 @@ interface Todo {
     id: string;
     name: string;
     status: Status;
-    // priority: Priority
+    priority: Priority
     categories: string[]
 }
 

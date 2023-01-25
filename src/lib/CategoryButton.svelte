@@ -48,12 +48,10 @@
           bind:innerHTML={item.name}
           on:click|stopPropagation
     ></span>
-    {#if item.name !== 'Allgemein'}
     <span class="delete"
           on:click={()=>deleteCategory(item.id)}
           on:click|stopPropagation>
     </span>
-    {/if}
 </div>
 
 

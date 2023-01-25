@@ -1,11 +1,10 @@
 <script lang="ts">
 
     import {todo_manager} from "./todo_manager";
-    import {v4} from "uuid";
 
     function addListItem() {
         $todo_manager.addCategory({
-            id: v4(),
+            id: crypto.randomUUID(),
             name: 'Kategorie',
             selected: false
         })
@@ -13,7 +12,6 @@
     }
 
 </script>
-
 
 <div class="tool-box-container">
 

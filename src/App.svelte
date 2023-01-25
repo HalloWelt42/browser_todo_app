@@ -52,6 +52,9 @@
         flex-direction: column;
     }
 
+    header{
+        margin-top: 10px;
+    }
 
     .add-todo {
         margin-top: 50px;

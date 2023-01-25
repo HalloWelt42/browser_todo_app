@@ -18,10 +18,10 @@ class TodoListController {
         this.default_category = 'Kategorie'
     }
 
-    saveTodo(){
-        localStorage.setItem("todo",JSON.stringify({
+    saveTodo() {
+        localStorage.setItem("todo", JSON.stringify({
             todos: this.todos,
-            categories : this.categories
+            categories: this.categories
         }));
     }
 
@@ -61,10 +61,22 @@ class TodoListController {
         return this.categories;
     }
 
+    getTodosCountBy(category_name: string): number {
+        let count = 0;
+        this.todos.forEach((todo)=>{
+            todo.categories.forEach((category)=>{
+                if(category === category_name){
+                    count++;
+                }
+            })
+        });
+        return count;
+    }
+
     getCategoriesCount(): number {
         let count = 0;
-        this.categories.forEach((categorie)=>{
-            if(categorie.selected === true){
+        this.categories.forEach((categorie) => {
+            if (categorie.selected === true) {
                 count++;
             }
         });

@@ -12,9 +12,17 @@ class TodoListController {
     private default_category: string;
 
     constructor() {
-        this.todos = [];
-        this.categories = [];
-        this.default_category = 'Allgemein'
+        let ToDoStore = JSON.parse(localStorage.getItem("todo")) || {};
+        this.todos = ToDoStore.todos || [];
+        this.categories = ToDoStore.categories || [];
+        this.default_category = 'Kategorie'
+    }
+
+    saveTodo(){
+        localStorage.setItem("todo",JSON.stringify({
+            todos: this.todos,
+            categories : this.categories
+        }));
     }
 
     addCategory(category: Category): void {
@@ -53,12 +61,22 @@ class TodoListController {
         return this.categories;
     }
 
+    getCategoriesCount(): number {
+        let count = 0;
+        this.categories.forEach((categorie)=>{
+            if(categorie.selected === true){
+                count++;
+            }
+        });
+        return count;
+    }
+
     getIdsFromCategories(): string[] {
         let ids = [];
         this.categories.forEach((category) => {
             if (
-                    category.selected === true
-                ||  category.name === this.default_category
+                category.selected === true
+                || category.name === this.default_category
             ) {
                 ids.push(category.id);
             }

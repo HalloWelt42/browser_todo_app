@@ -5,36 +5,29 @@
     import Statusbar from "./lib/Statusbar.svelte";
 
     import {todo_manager} from "./lib/todo_manager";
-    import {v4} from "uuid";
+
+
     import AddTodo from "./lib/AddTodo.svelte";
     import ModalDialog from "./lib/ModalDialog.svelte";
     import {TodoListController} from "./lib/controller/TodoListController";
     import TodoList from "./lib/TodoList.svelte";
+    import {States} from "./lib/components/DataBaseIcon/States";
 
     $todo_manager = new TodoListController();
-    $todo_manager.addCategory({
-        id: v4(),
-        name: 'Allgemein',
-        selected: true
-    });
-
+    let current_state: string;
     let visibillity = false;
 
-    $:{
-        // console.log($todo_manager);
-        console.log($todo_manager.getTodos());
-        console.log($todo_manager.getCategories());
-    }
+    $:{$todo_manager.saveTodo()}
 
 </script>
 
-<ModalDialog {visibillity}/>
+<ModalDialog bind:visibillity/>
 
 <div class="app-container">
     <header>
         <div class="header-container">
             <ListToolbox/>
-            <Lists />
+            <Lists/>
         </div>
     </header>
     <main>
@@ -46,7 +39,7 @@
         </section>
     </main>
     <footer>
-        <Statusbar/>
+        <Statusbar bind:current_state/>
     </footer>
 </div>
 
@@ -59,7 +52,7 @@
     }
 
 
-    .add-todo{
+    .add-todo {
         margin-top: 50px;
     }
 
@@ -87,7 +80,7 @@
         background-color: hsla(0, 100%, 100%, 1);
         position: fixed;
         width: 100%;
-        box-shadow: 0 5px 50px gray;
+        box-shadow: 0 5px 20px #ddd;
         top: 0;
     }
 
@@ -95,8 +88,7 @@
     footer {
         width: 100%;
         background-color: hsla(0, 100%, 100%, 1);
-        color: hsla(0, 0%, 50%, 1);
-        box-shadow: -10px 5px 50px gray;
+        box-shadow: 0 -5px 20px #ddd;
         position: fixed;
         bottom: 0;
         height: 3em;

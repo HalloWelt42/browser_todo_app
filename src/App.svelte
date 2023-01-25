@@ -54,6 +54,7 @@
 
     header{
         margin-top: 10px;
+        z-index: 1;
     }
 
     .add-todo {

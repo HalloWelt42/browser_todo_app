@@ -14,7 +14,7 @@
 
     $todo_manager = new TodoListController();
     let current_state: string;
-    let visibillity = false;
+    let visibility = false;
 
     // Trigger
     $:{$todo_manager.saveTodo()}
@@ -22,7 +22,7 @@
 </script>
 
 
-<ModalDialog bind:visibillity/>
+<ModalDialog bind:visibility/>
 
 <div class="app-container">
     <header>

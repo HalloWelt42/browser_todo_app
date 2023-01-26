@@ -1,13 +1,13 @@
 <script lang="ts">
-    export let visibillity = true;
+    export let visibility = true;
 
     function toggle(): void {
-        visibillity = !visibillity;
+        visibility = !visibility;
     }
 </script>
 
 
-<div class="modal is-active" class:is-active={visibillity}>
+<div class="modal is-active" class:is-active={visibility}>
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="notification">

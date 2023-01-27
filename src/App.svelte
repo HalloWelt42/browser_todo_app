@@ -10,14 +10,14 @@
     import ModalDialog from "./lib/ModalDialog.svelte";
     import {TodoListController} from "./lib/controller/TodoListController";
     import TodoList from "./lib/TodoList.svelte";
-    import {States} from "./lib/components/DataBaseIcon/States";
 
     $todo_manager = new TodoListController();
-    let current_state: string;
     let visibility = false;
 
     // Trigger
-    $:{$todo_manager.saveTodo()}
+    $:{
+        $todo_manager.saveTodo()
+    }
 
 </script>
 
@@ -36,11 +36,11 @@
             <AddTodo/>
         </div>
         <section class="todo-list">
-            <TodoList/>
+            <TodoList />
         </section>
     </main>
     <footer>
-        <Statusbar bind:current_state/>
+        <Statusbar />
     </footer>
 </div>
 

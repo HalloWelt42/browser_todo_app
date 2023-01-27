@@ -1,3 +1,7 @@
-type Priority = 'high' | 'medium' | 'low'
+enum Priority {
+    high = "high",
+    medium = "medium",
+    low = "low"
+}
 
-export type {Priority}
+export {Priority}

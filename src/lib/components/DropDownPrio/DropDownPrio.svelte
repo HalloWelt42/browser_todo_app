@@ -1,9 +1,9 @@
 <script lang="ts">
     import {todo_manager} from "../../todo_manager";
-    import type {Priority} from "../../model/Priority";
+    import {Priority} from "../../model/Priority";
 
     export let item;
-
+    // let priority_keys = Object.keys(Priority).filter(k => typeof Priority[k as any] === "number");
     let active = false;
 
     function toggle() {
@@ -18,6 +18,7 @@
 </script>
 
 <div class="dropdown" class:is-active={active}>
+    <!-- trigger -->
     <div class="dropdown-trigger">
         <button class="button {item.priority} is-small is-rounded"
                 aria-haspopup="true" aria-controls="dropdown-menu"
@@ -29,11 +30,12 @@
       </span>
         </button>
     </div>
+    <!-- menu -->
     <div class="dropdown-menu" role="menu">
         <div class="dropdown-content"
              on:click={toggle}
         >
-            {#each ['low', 'medium', 'high'] as priority}
+            {#each Object.entries(Priority) as [priority,priority]}
                 <a class="dropdown-item"
                    on:click={()=>changePrio(item.id,priority)}
                    class:is-active={item.priority === priority}
@@ -53,16 +55,19 @@
 
     .low {
         background: inherit;
+        border-color: transparent;
     }
 
     .medium {
         background: hsl(48, 100%, 90%);
         color: hsl(48, 100%, 25%);
+        border-color: hsl(48, 100%, 25%);
     }
 
     .high {
         background: hsl(347, 90%, 96%);
         color: hsl(348, 86%, 43%);
+        border-color: hsl(348, 86%, 43%);
     }
 
 </style>

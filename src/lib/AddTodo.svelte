@@ -1,12 +1,13 @@
 <script lang="ts">
     import {todo_manager} from "./todo_manager";
+    import {Priority} from "./model/Priority";
 
     function addTodo() {
         $todo_manager.addTodo({
             id: crypto.randomUUID(),
             name: 'Aufgabe',
             status: 'open',
-            priority: 'low',
+            priority: Priority.low,
             categories:[]
         });
         $todo_manager = $todo_manager;

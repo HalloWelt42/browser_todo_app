@@ -2,6 +2,9 @@
 
     import {todo_manager} from "./todo_manager";
     import {text_sanitizer} from "./helper/text_sanitizer";
+    import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
+
+    let priority;
 
     function switch_status(id) {
         $todo_manager.toggleTodoStatus(id);
@@ -42,11 +45,13 @@
             <th></th>
             <th class="has-text-grey-light">Aufgaben</th>
             <th></th>
+            <th></th>
+            <th></th>
             </thead>
             {#each $todo_manager.getTodos() as item}
                 {#if item.status !== 'archived'}
                     <tr>
-                        <!-- Status -->
+                        <!-- status -->
                         <td on:click={()=>switch_status(item.id)}>
                             {#if item.status === 'open'}
                                 <i class="open is-size-4 icon fa-regular fa-circle-check"></i>
@@ -61,7 +66,7 @@
                                 <i class="archived is-size-4 has-text-grey icon fa-solid fa-box-archive"></i>
                             {/if}
                         </td>
-                        <!-- Name -->
+                        <!-- toto name -->
                         <td class="todo">
                             <div class="todo-name"
                                  contenteditable="true"
@@ -73,7 +78,15 @@
                                  bind:innerHTML={item.name}
                             ></div>
                         </td>
-                        <!-- Options -->
+                        <!-- categories edit -->
+                        <td>
+
+                        </td>
+                        <!-- priorities switcher -->
+                        <td>
+                            <DropDownPrio {item} />
+                        </td>
+                        <!-- delete -->
                         <td on:click={()=>deleteTodo(item.id)}
                             on:click|stopPropagation
                         >
@@ -89,8 +102,9 @@
 
 <style>
     .todo-list {
-        /*border: 1px solid;*/
-        width: 800px;
+        width: 860px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
 
     .todo-name {

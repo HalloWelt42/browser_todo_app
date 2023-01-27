@@ -2,6 +2,7 @@ import type {Todo} from "../model/Todo";
 import type {Category} from "../model/Category";
 import type {Status} from "../model/Status";
 import {todo_manager} from "../todo_manager";
+import type {Priority} from "../model/Priority";
 
 export {TodoListController}
 
@@ -36,6 +37,14 @@ class TodoListController {
         this.categories[index].name = name;
     }
 
+    getCategoryName(id: string): string {
+        let index = this.categories.findIndex((category) => {
+            return category.id === id;
+        });
+        let name = this.categories[index].name;
+        return name;
+    }
+
     existsCategoryName(name: string): boolean {
         let index = this.categories.findIndex((category) => {
             return category.name === name;
@@ -63,9 +72,9 @@ class TodoListController {
 
     getTodosCountBy(category_name: string): number {
         let count = 0;
-        this.todos.forEach((todo)=>{
-            todo.categories.forEach((category)=>{
-                if(category === category_name){
+        this.todos.forEach((todo) => {
+            todo.categories.forEach((category) => {
+                if (category === category_name) {
                     count++;
                 }
             })
@@ -127,6 +136,13 @@ class TodoListController {
 
     getTodos(): Todo[] {
         return this.todos;
+    }
+
+    setTodoPriority(id: string, priority: Priority): void {
+        let index = this.todos.findIndex((todo) => {
+            return todo.id === id;
+        });
+        this.todos[index].priority = priority;
     }
 
     addTodo(todo: Todo): void {

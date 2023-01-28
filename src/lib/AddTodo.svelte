@@ -33,7 +33,7 @@
 </div>
 
 
-<style lang="scss">
+<style lang="css">
     .tool {
         display: flex;
     }

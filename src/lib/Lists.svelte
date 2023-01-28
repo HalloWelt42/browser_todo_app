@@ -1,20 +1,20 @@
 <script lang="ts">
-    import {todo_manager} from "./todo_manager.js";
-    import CategoryButton from "./CategoryButton.svelte";
+	import { todo_manager } from "./todo_manager.js";
+	import CategoryButton from "./CategoryButton.svelte";
 </script>
 
-
 <div class="lists">
-    {#each $todo_manager.getCategories() as item}
-        <CategoryButton {item} />
-    {/each}
+	{#each $todo_manager.getCategories() as item}
+		<CategoryButton {item} />
+	{/each}
 </div>
 
-
 <style>
+	.lists {
+		display: flex;
 
-    .lists {
-        display: flex;
-    }
+		gap: 10px;
 
+		align-items: center;
+	}
 </style>

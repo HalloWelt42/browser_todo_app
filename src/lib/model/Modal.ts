@@ -1,6 +1,6 @@
 interface Modal {
-    active: boolean,
-    message: string
+	active: boolean;
+	message: string;
 }
 
-export type {Modal}
+export type { Modal };

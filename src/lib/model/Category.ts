@@ -1,7 +1,7 @@
 interface Category {
-    id: string;
-    name: string;
-    selected: boolean;
+	id: string;
+	name: string;
+	selected: boolean;
 }
 
-export type {Category};
+export type { Category };

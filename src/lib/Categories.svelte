@@ -3,14 +3,14 @@
 	import CategoryButton from "./CategoryButton.svelte";
 </script>
 
-<div class="lists">
+<div class="categories">
 	{#each $todo_manager.getCategories() as item}
 		<CategoryButton {item} />
 	{/each}
 </div>
 
 <style>
-	.lists {
+	.categories {
 		display: flex;
 		gap: 15px;
 		align-items: center;

@@ -2,14 +2,12 @@
     import {text_sanitizer} from "./helper/text_sanitizer";
     import {todo_manager} from "./todo_manager";
     import DeleteButton from "./components/buttons/DeleteButton.svelte";
+    import {modus} from "./todo_manager.js";
 
     export let item;
+    export let categories_edit_active;
 
     let danger = '';
-    $:{
-        console.log(danger);
-        console.log(categoryClasses());
-    }
 
     function categoryClasses():string {
         return danger;
@@ -25,7 +23,7 @@
             $todo_manager.deleteCategory(categoryId);
         } else {
             danger = 'danger';
-            setTimeout(()=>{danger=''},500);
+            setTimeout(()=>{danger=''},250);
         }
         $todo_manager = $todo_manager;
     }
@@ -55,19 +53,24 @@
         class="category-button list button is-link {danger}"
         on:click={() => toggleCategorySelected(item.id)}
         class:is-light={!item.selected && danger !== 'danger'}>
-    <div
-            class="name-field"
-            contenteditable="true"
-            on:keypress={(event) => saveByReturn(item.id, event)}
-            on:focusout={(event) => saveCategoryName(item.id, event)}
-            on:click={(event) => clearInput(item.id, event)}
-            on:focus={(event) => clearInput(item.id, event)}
-            bind:innerHTML={item.name}
-            on:click|stopPropagation></div>
 
-    <div class="delete-category" on:click={() => deleteCategory(item.id)} on:click|stopPropagation>
-        <DeleteButton/>
-    </div>
+    {#if $modus.categories_edit_active === true}
+        <div
+                class="name-field"
+                contenteditable="true"
+                on:keypress={(event) => saveByReturn(item.id, event)}
+                on:focusout={(event) => saveCategoryName(item.id, event)}
+                on:click={(event) => clearInput(item.id, event)}
+                on:focus={(event) => clearInput(item.id, event)}
+                bind:innerHTML={item.name}
+                on:click|stopPropagation></div>
+        <div class="delete-category" on:click={() => deleteCategory(item.id)} on:click|stopPropagation>
+            <DeleteButton/>
+        </div>
+    {/if}
+    {#if $modus.categories_edit_active === false}
+        {item.name}
+    {/if}
     {#if $todo_manager.getTodosCountBy(item.id) > 0}
         <div class="badge">&nbsp;{$todo_manager.getTodosCountBy(item.id)}&nbsp;</div>
     {/if}
@@ -91,6 +94,11 @@
         min-width: 40px;
         cursor: text;
         outline: none;
+        border: 1px solid hsla(0,0%,0%,0.3);
+        padding-right: 2px;
+        padding-left: 2px;
+        color: #333;
+        background-color: hsla(0,100%,100%,1);
     }
 
     .badge {

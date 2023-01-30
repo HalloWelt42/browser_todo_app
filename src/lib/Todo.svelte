@@ -37,3 +37,14 @@
         on:focus={(event) => clearInput(item.id, event)}
         class:warning={item.name === "Der Name der Aufgabe darf nicht leer sein!"}
         bind:innerHTML={item.name}></div>
+
+
+<style lang="scss">
+
+  .todo-name {
+    font-weight: lighter;
+    font-size: 1.5rem;
+    outline: none;
+  }
+
+</style>

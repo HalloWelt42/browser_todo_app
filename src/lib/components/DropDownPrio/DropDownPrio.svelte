@@ -26,7 +26,7 @@
 			on:click={toggle}>
 			<span>Priorität</span>
 			<span class="icon is-small">
-				<i class="fas fa-angle-down" aria-hidden="true" />
+				<i class="fas fa-angle-down" aria-hidden="true"></i>
 			</span>
 		</button>
 	</div>

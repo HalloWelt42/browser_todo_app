@@ -2,6 +2,7 @@
 	import { todo_manager } from "./todo_manager";
 	import { text_sanitizer } from "./helper/text_sanitizer";
 	import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
+	import DeleteButton from "./components/buttons/DeleteButton.svelte";
 
 	function switch_status(id) {
 		$todo_manager.toggleTodoStatus(id);
@@ -82,7 +83,7 @@
 						</td>
 						<!-- delete -->
 						<td on:click={() => deleteTodo(item.id)} on:click|stopPropagation>
-							<i class="delete-task fa-solid fa-circle-xmark"></i>
+							<DeleteButton />
 						</td>
 					</tr>
 				{/if}
@@ -124,20 +125,6 @@
 
 			.warning {
 				color: orangered;
-			}
-
-			.delete-task {
-				color: rgba(10, 10, 10, 0.2);
-				font-size: 1.5rem;
-
-				&:hover {
-					cursor: pointer;
-					color: rgba(10, 10, 10, 0.3);
-				}
-
-				&:active {
-					color: rgba(10, 10, 10, 0.4);
-				}
 			}
 		}
 	}

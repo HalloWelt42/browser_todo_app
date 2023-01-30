@@ -12,9 +12,7 @@
 <style>
 	.lists {
 		display: flex;
-
-		gap: 10px;
-
+		gap: 15px;
 		align-items: center;
 	}
 </style>

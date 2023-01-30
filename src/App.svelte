@@ -13,7 +13,7 @@
 
     $todo_manager = new TodoListController();
     $modus = {
-        categories_edit_active:true
+        categories_edit_active: true
     };
 
     let visibility = false;
@@ -29,10 +29,10 @@
     <header>
         <div class="header-container">
             <CategoryAdd/>
-            <Categories/>
-            <div class="edit-container">
-                <CategoriesEdit/>
+            <div class="categories-container">
+                <Categories/>
             </div>
+            <CategoriesEdit/>
         </div>
     </header>
     <main>
@@ -61,10 +61,10 @@
   header {
     position: fixed;
     width: 100%;
-    box-shadow: 0 5px 20px #ddd;
+    box-shadow: 0 0 10px #ddd;
     top: 0;
     z-index: 1;
-    padding: 5px 0;
+    padding: 10px 0;
   }
 
   .add-todo {
@@ -79,14 +79,27 @@
     margin-bottom: 54px;
   }
 
-  .header-container,.edit-container {
+  .header-container, .categories-container {
     display: flex;
   }
-  .edit-container{
+
+  .categories-container {
+    padding: 8px 0;
+  }
+
+  .categories-container {
     width: 100%;
-    justify-content: flex-end;
     margin-left: 15px;
     margin-right: 15px;
+    //border: 1px solid red;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  .categories-container::-webkit-scrollbar {
+    display: none;
   }
 
   .app-container {
@@ -100,7 +113,7 @@
 
   footer {
     width: 100%;
-    box-shadow: 0 -5px 20px #ddd;
+    box-shadow: 0 0 10px #ddd;
     position: fixed;
     bottom: 0;
     height: 48px;

@@ -11,16 +11,16 @@
 	}
 </script>
 
-<div class="tool-box-container">
 	<div class="tool-container">
 		<div class="tool button is-white" on:click={addListItem}>
 			<i class="fas fa-plus icon"></i>&nbsp;&nbsp;neue Kategorie
 		</div>
 	</div>
-</div>
 
 <style>
 	.tool-container {
+		display: flex;
+		align-items: center;
 		margin: 5px;
 	}
 </style>

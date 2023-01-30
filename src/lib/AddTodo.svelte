@@ -16,7 +16,7 @@
 
 <div class="tool-container">
 	<div class="tool button is-white" on:click={addTodo}>
-		<i class="fas fa-plus icon" />&nbsp;&nbsp;neue Aufgabe
+		<i class="fas fa-plus icon"></i>&nbsp;&nbsp;neue Aufgabe
 	</div>
 	<div class="tool button is-white has-text-grey">
 		{#if $todo_manager.getCategoriesCount() === 0}

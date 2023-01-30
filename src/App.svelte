@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ListToolbox from "./lib/ListToolbox.svelte";
-	import Lists from "./lib/Lists.svelte";
+	import CategoriesToolbox from "./lib/CategoriesToolbox.svelte";
+	import Categories from "./lib/Categories.svelte";
 	import Statusbar from "./lib/Statusbar.svelte";
 
 	import { todo_manager } from "./lib/todo_manager";
@@ -24,8 +24,8 @@
 <div class="app-container">
 	<header>
 		<div class="header-container">
-			<ListToolbox />
-			<Lists />
+			<CategoriesToolbox />
+			<Categories />
 		</div>
 	</header>
 	<main>

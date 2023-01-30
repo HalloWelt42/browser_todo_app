@@ -38,11 +38,11 @@
 	{#if $todo_manager.getTodos().length > 0}
 		<table class="table">
 			<thead>
-				<th />
+				<th></th>
 				<th class="has-text-grey-light">Aufgaben</th>
-				<th />
-				<th />
-				<th />
+				<th></th>
+				<th></th>
+				<th></th>
 			</thead>
 			{#each $todo_manager.getTodos() as item}
 				{#if item.status !== "archived"}
@@ -50,16 +50,16 @@
 						<!-- status -->
 						<td on:click={() => switch_status(item.id)}>
 							{#if item.status === "open"}
-								<i class="open is-size-4 icon fa-regular fa-circle-check" />
+								<i class="open is-size-4 icon fa-regular fa-circle-check"></i>
 							{/if}
 							{#if item.status === "in_progress"}
-								<i class="in_progress is-size-4 has-text-info icon fa-solid fa-hourglass" />
+								<i class="in_progress is-size-4 has-text-info icon fa-solid fa-hourglass"></i>
 							{/if}
 							{#if item.status === "completed"}
-								<i class="completed is-size-4 has-text-success icon fa-solid fa-circle-check" />
+								<i class="completed is-size-4 has-text-success icon fa-solid fa-circle-check"></i>
 							{/if}
 							{#if item.status === "archived"}
-								<i class="archived is-size-4 has-text-grey icon fa-solid fa-box-archive" />
+								<i class="archived is-size-4 has-text-grey icon fa-solid fa-box-archive"></i>
 							{/if}
 						</td>
 						<!-- toto name -->
@@ -72,17 +72,17 @@
 								on:click={(event) => clearInput(item.id, event)}
 								on:focus={(event) => clearInput(item.id, event)}
 								class:warning={item.name === "Der Name der Aufgabe darf nicht leer sein!"}
-								bind:innerHTML={item.name} />
+								bind:innerHTML={item.name}></div>
 						</td>
 						<!-- categories edit -->
-						<td />
+						<td></td>
 						<!-- priorities switcher -->
 						<td>
 							<DropDownPrio {item} />
 						</td>
 						<!-- delete -->
 						<td on:click={() => deleteTodo(item.id)} on:click|stopPropagation>
-							<i class="delete-task fa-solid fa-circle-xmark" />
+							<i class="delete-task fa-solid fa-circle-xmark"></i>
 						</td>
 					</tr>
 				{/if}

@@ -23,6 +23,7 @@
     }
 </script>
 
+
 <ModalDialog bind:visibility/>
 
 <div class="app-container">
@@ -47,6 +48,7 @@
         <Statusbar/>
     </footer>
 </div>
+
 
 <style lang="scss">
 

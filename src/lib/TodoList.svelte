@@ -1,39 +1,20 @@
 <script lang="ts">
+
 	import { todo_manager } from "./todo_manager";
-	import { text_sanitizer } from "./helper/text_sanitizer";
 	import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
 	import DeleteButton from "./components/buttons/DeleteButton.svelte";
-
+	import Todo from "./Todo.svelte";
 	function switch_status(id) {
 		$todo_manager.toggleTodoStatus(id);
 		$todo_manager = $todo_manager;
 	}
-
-	function saveTodoName(id: string, e) {
-		let text = text_sanitizer(e.target.innerHTML, "Aufgabe");
-		$todo_manager.updateTodoName(id, text);
-		$todo_manager = $todo_manager;
-	}
-
 	function deleteTodo(id: string) {
 		$todo_manager.deleteTodo(id);
 		$todo_manager = $todo_manager;
 	}
 
-	function clearInput(id, e) {
-		let text = e.target.innerHTML;
-		if (text === "Aufgabe") {
-			e.target.innerHTML = "";
-		}
-	}
-
-	function saveByReturn(id: string, e) {
-		if (e.keyCode === 13) {
-			saveTodoName(id, e);
-			e.target.blur();
-		}
-	}
 </script>
+
 
 <div class="todo-list">
 	{#if $todo_manager.getTodos().length > 0}
@@ -65,15 +46,7 @@
 						</td>
 						<!-- toto name -->
 						<td class="todo">
-							<div
-								class="todo-name"
-								contenteditable="true"
-								on:keypress={(event) => saveByReturn(item.id, event)}
-								on:focusout={(event) => saveTodoName(item.id, event)}
-								on:click={(event) => clearInput(item.id, event)}
-								on:focus={(event) => clearInput(item.id, event)}
-								class:warning={item.name === "Der Name der Aufgabe darf nicht leer sein!"}
-								bind:innerHTML={item.name}></div>
+							<Todo {item}/>
 						</td>
 						<!-- categories edit -->
 						<td></td>
@@ -91,6 +64,7 @@
 		</table>
 	{/if}
 </div>
+
 
 <style lang="scss">
 	.todo-list {

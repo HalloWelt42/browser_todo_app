@@ -14,7 +14,7 @@
 <div class="tool-box-container">
 	<div class="tool-container">
 		<div class="tool button is-white" on:click={addListItem}>
-			<i class="fas fa-plus icon" />&nbsp;&nbsp;neue Kategorie
+			<i class="fas fa-plus icon"></i>&nbsp;&nbsp;neue Kategorie
 		</div>
 	</div>
 </div>

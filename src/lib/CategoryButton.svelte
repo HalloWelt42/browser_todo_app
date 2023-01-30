@@ -47,7 +47,7 @@
 		on:click={(event) => clearInput(item.id, event)}
 		on:focus={(event) => clearInput(item.id, event)}
 		bind:innerHTML={item.name}
-		on:click|stopPropagation />
+		on:click|stopPropagation></span>
 	<span class="delete" on:click={() => deleteCategory(item.id)} on:click|stopPropagation />
 	<span class="badge">{$todo_manager.getTodosCountBy(item.id)}</span>
 </button>

@@ -8,10 +8,10 @@
 
 <div class="edit" on:click={handleClick}>
     {#if $modus.categories_edit_active === true}
-        <i class="active fa-regular fa-pen-to-square is-size-3"></i>
+        <i class="icon active fa-regular fa-pen-to-square is-size-3"></i>
     {/if}
     {#if $modus.categories_edit_active === false}
-        <i class="fa-regular fa-pen-to-square is-size-3"></i>
+        <i class="icon fa-regular fa-pen-to-square is-size-3"></i>
     {/if}
 </div>
 
@@ -36,5 +36,11 @@
     &:active {
       color: $icon-clicked;
     }
+
+    .icon{
+      margin: 10px 20px 10px 20px;
+      padding: 10px;
+    }
+
   }
 </style>

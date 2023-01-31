@@ -29,7 +29,7 @@
 
 
 <div
-        class="todo-name"
+        class="todo-name is-size-3 is-bold"
         contenteditable="true"
         on:keypress={(event) => saveByReturn(item.id, event)}
         on:focusout={(event) => saveTodoName(item.id, event)}
@@ -43,7 +43,6 @@
 
   .todo-name {
     font-weight: lighter;
-    font-size: 1.5rem;
     outline: none;
   }
 

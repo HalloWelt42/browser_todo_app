@@ -46,7 +46,7 @@
         <table class="table">
             <thead>
             <th></th>
-            <th class="has-text-grey-light">{($info.count_show_todos)} Aufgaben</th>
+            <th class="has-text-grey-light">insgesamt {($todo_manager.getTodos().length)} Aufgaben vorhanden</th>
             <th></th>
             <th></th>
             <th></th>

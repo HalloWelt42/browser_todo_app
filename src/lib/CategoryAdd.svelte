@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { todo_manager } from "./todo_manager";
-
+	import newUniqueId from 'locally-unique-id-generator';
 	function addListItem() {
 		$todo_manager.addCategory({
-			id: crypto.randomUUID(),
+			id: newUniqueId(),
 			name: "Kategorie",
 			selected: false,
 		});

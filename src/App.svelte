@@ -99,8 +99,9 @@
   .categories-container {
     width: 100%;
     margin-left: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-right: 15px;
-    //border: 1px solid red;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;

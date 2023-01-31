@@ -1,10 +1,11 @@
 <script lang="ts">
     import {todo_manager} from "./todo_manager";
     import {Priority} from "./model/Priority";
+    import newUniqueId from "locally-unique-id-generator";
 
     function addTodo() {
         $todo_manager.addTodo({
-            id: crypto.randomUUID(),
+            id: newUniqueId(),
             name: "Aufgabe",
             status: "open",
             priority: Priority.low,

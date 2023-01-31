@@ -14,8 +14,11 @@
     $todo_manager = new TodoListController();
     $modus = {
         categories_edit_active: false,
-        todos_show_archived: false,
-        todos_show_completed: false
+
+        todos_show_open: true,
+        todos_show_in_progress: true,
+        todos_show_completed: false,
+        todos_show_archived: false
     };
     $info = {
         count_show_todos: 0

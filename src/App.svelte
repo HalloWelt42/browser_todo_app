@@ -15,6 +15,7 @@
     $modus = {
         categories_edit_active: false,
         todos_show_archived: false,
+        todos_show_completed: false
     };
     $info = {
         count_show_todos: 0

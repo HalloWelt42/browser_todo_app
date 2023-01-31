@@ -2,28 +2,28 @@
     import {modus, todo_manager} from "../../todo_manager.ts";
 
     function handleClick() {
-        $modus.todos_show_archived = !$modus.todos_show_archived;
+        $modus.todos_show_completed = !$modus.todos_show_completed;
         $todo_manager = $todo_manager;
     }
 </script>
 
-<div class="archived" on:click={handleClick}>
-    {#if $modus.todos_show_archived === true}
-        <i class="icon active fa-solid fa-box-archive is-size-3"></i>
+<div class="check" on:click={handleClick}>
+    {#if $modus.todos_show_completed === true}
+        <i class="icon active fa-solid fa-circle-check is-size-3"></i>
     {/if}
-    {#if $modus.todos_show_archived === false}
-        <i class="icon fa-solid fa-box-archive is-size-3"></i>
+    {#if $modus.todos_show_completed === false}
+        <i class="icon fa-solid fa-circle-check is-size-3"></i>
     {/if}
 </div>
 
 <style lang="scss">
   @import "src/vars.scss";
 
-  .archived > .active {
+  .check > .active {
     color: $icon-active;
   }
 
-  .archived {
+  .check {
     display: flex;
     gap: 15px;
     align-items: center;
@@ -38,7 +38,7 @@
       color: $icon-clicked;
     }
 
-    .icon {
+    .icon{
       margin: 10px 20px 10px 20px;
       padding: 10px;
     }

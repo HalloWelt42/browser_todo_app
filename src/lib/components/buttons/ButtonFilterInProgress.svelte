@@ -7,7 +7,7 @@
     }
 </script>
 
-<div class="in_progress" on:click={handleClick}>
+<div class="in_progress" on:click={handleClick} title="laufende Aufgaben filtern">
     {#if $modus.todos_show_in_progress === true}
         <i class="icon active fa-solid fa-hourglass-half"></i>
     {/if}

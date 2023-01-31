@@ -7,7 +7,7 @@
     }
 </script>
 
-<div class="open" on:click={handleClick}>
+<div class="open" on:click={handleClick} title="offene Aufgaben filtern">
     {#if $modus.todos_show_open === true}
         <i class="icon active fa-regular fa-circle-check"></i>
     {/if}

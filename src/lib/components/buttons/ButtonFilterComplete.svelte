@@ -7,7 +7,7 @@
     }
 </script>
 
-<div class="check" on:click={handleClick}>
+<div class="check" on:click={handleClick} title="erledigte Aufgaben filtern">
     {#if $modus.todos_show_completed === true}
         <i class="icon active fa-solid fa-circle-check"></i>
     {/if}

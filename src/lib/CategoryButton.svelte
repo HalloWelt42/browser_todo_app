@@ -65,7 +65,7 @@
                 bind:innerHTML={item.name}
                 on:click|stopPropagation></div>
         <div class="delete-category" on:click={() => deleteCategory(item.id)} on:click|stopPropagation>
-            <DeleteButton/>
+            <DeleteButton />
         </div>
     {/if}
     {#if $modus.categories_edit_active === false}

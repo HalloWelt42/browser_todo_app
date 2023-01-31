@@ -3,7 +3,7 @@
     import Categories from "./lib/Categories.svelte";
     import Statusbar from "./lib/Statusbar.svelte";
 
-    import {modus, todo_manager,info} from "./lib/todo_manager";
+    import {modus, todo_manager, info} from "./lib/todo_manager";
 
     import AddTodo from "./lib/AddTodo.svelte";
     import ModalDialog from "./lib/ModalDialog.svelte";
@@ -13,7 +13,8 @@
 
     $todo_manager = new TodoListController();
     $modus = {
-        categories_edit_active: false
+        categories_edit_active: false,
+        todos_show_archived: false,
     };
     $info = {
         count_show_todos: 0
@@ -78,7 +79,6 @@
 
   .todo-list-wrapper {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     margin-top: 80px;
     margin-bottom: 54px;

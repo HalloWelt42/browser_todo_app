@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {todo_manager} from "./todo_manager";
+    import {info, todo_manager} from "./todo_manager";
     import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
     import DeleteButton from "./components/buttons/DeleteButton.svelte";
     import Todo from "./Todo.svelte";
@@ -14,6 +14,10 @@
         $todo_manager.deleteTodo(id);
         $todo_manager = $todo_manager;
     }
+    
+    function filter(item) {
+        return $todo_manager.isOneCategoriesSelected(item);
+    }
 
 </script>
 
@@ -23,13 +27,13 @@
         <table class="table">
             <thead>
             <th></th>
-            <th class="has-text-grey-light">Aufgaben</th>
+            <th class="has-text-grey-light">{($info.count_show_todos)} Aufgaben</th>
             <th></th>
             <th></th>
             <th></th>
             </thead>
             {#each $todo_manager.getTodos() as item}
-                {#if item.status !== "archived"}
+                {#if filter(item.categories)}
                     <tr>
                         <!-- status -->
                         <td on:click={() => switch_status(item.id)}>

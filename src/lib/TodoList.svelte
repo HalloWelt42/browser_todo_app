@@ -1,9 +1,10 @@
 <script lang="ts">
 
-    import {info, todo_manager} from "./todo_manager";
+    import {info, modus, todo_manager} from "./todo_manager";
     import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
     import DeleteButton from "./components/buttons/DeleteButton.svelte";
     import Todo from "./Todo.svelte";
+    import ButtonFilterArchiv from "./components/buttons/ButtonFilterArchiv.svelte";
 
     function switch_status(id) {
         $todo_manager.toggleTodoStatus(id);
@@ -14,9 +15,11 @@
         $todo_manager.deleteTodo(id);
         $todo_manager = $todo_manager;
     }
-    
-    function filter(item) {
-        return $todo_manager.isOneCategoriesSelected(item);
+
+    function filter(item):boolean {
+        let archived = $modus.todos_show_archived === true && item.status === "archived";
+        let isOneCategoriesSelected = $todo_manager.isOneCategoriesSelected(item.categories);
+        return isOneCategoriesSelected && item.status !== "archived" || archived;
     }
 
 </script>
@@ -24,6 +27,9 @@
 
 <div class="todo-list">
     {#if $todo_manager.getTodos().length > 0}
+        <div class="filter">
+            <ButtonFilterArchiv/>
+        </div>
         <table class="table">
             <thead>
             <th></th>
@@ -33,7 +39,7 @@
             <th></th>
             </thead>
             {#each $todo_manager.getTodos() as item}
-                {#if filter(item.categories)}
+                {#if filter(item)}
                     <tr>
                         <!-- status -->
                         <td on:click={() => switch_status(item.id)}>
@@ -108,4 +114,10 @@
       }
     }
   }
+
+  .filter {
+    display: flex;
+    justify-content: flex-end;
+  }
+
 </style>

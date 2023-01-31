@@ -9,10 +9,10 @@
 
 <div class="archived" on:click={handleClick}>
     {#if $modus.todos_show_archived === true}
-        <i class="icon active fa-solid fa-box-archive is-size-3"></i>
+        <i class="icon active fa-solid fa-box-archive"></i>
     {/if}
     {#if $modus.todos_show_archived === false}
-        <i class="icon fa-solid fa-box-archive is-size-3"></i>
+        <i class="icon fa-solid fa-box-archive"></i>
     {/if}
 </div>
 

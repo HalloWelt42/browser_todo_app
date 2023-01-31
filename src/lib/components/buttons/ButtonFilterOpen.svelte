@@ -9,10 +9,10 @@
 
 <div class="open" on:click={handleClick}>
     {#if $modus.todos_show_open === true}
-        <i class="icon active fa-regular fa-circle-check is-size-3"></i>
+        <i class="icon active fa-regular fa-circle-check"></i>
     {/if}
     {#if $modus.todos_show_open === false}
-        <i class="icon fa-regular fa-circle-check is-size-3"></i>
+        <i class="icon fa-regular fa-circle-check"></i>
     {/if}
 </div>
 

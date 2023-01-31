@@ -34,7 +34,8 @@
 
 <div class="todo-list">
     {#if $todo_manager.getTodos().length > 0}
-        <div class="filter">
+        <div class="filter is-size-4">
+            <i class="fa-solid fa-filter is-size-5"></i>
             <ButtonFilterOpen />
             <ButtonFilterInProgress />
             <ButtonFilterComplete />

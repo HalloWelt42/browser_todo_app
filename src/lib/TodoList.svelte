@@ -6,6 +6,8 @@
     import Todo from "./Todo.svelte";
     import ButtonFilterArchiv from "./components/buttons/ButtonFilterArchiv.svelte";
     import ButtonFilterComplete from "./components/buttons/ButtonFilterComplete.svelte";
+    import ButtonFilterInProgress from "./components/buttons/ButtonFilterInProgress.svelte";
+    import ButtonFilterOpen from "./components/buttons/ButtonFilterOpen.svelte";
 
     function switch_status(id) {
         $todo_manager.toggleTodoStatus(id);
@@ -20,14 +22,11 @@
     function filter(item):boolean {
         return      $todo_manager.isOneCategoriesSelected(item.categories)
                 &&  (
-                        item.status === 'open'
-                    ||  item.status === 'completed' && $modus.todos_show_completed === true
-                    ||  item.status === 'in_progress'
-                    ||  item.status === 'archived' && $modus.todos_show_archived === true
+                        item.status === 'open'          && $modus.todos_show_open === true
+                    ||  item.status === 'completed'     && $modus.todos_show_completed === true
+                    ||  item.status === 'in_progress'   && $modus.todos_show_in_progress === true
+                    ||  item.status === 'archived'      && $modus.todos_show_archived === true
             );
-                // && item.status !== "archived"
-            // ||  $modus.todos_show_archived === true
-            //     && item.status === "archived";
     }
 
 </script>
@@ -36,6 +35,8 @@
 <div class="todo-list">
     {#if $todo_manager.getTodos().length > 0}
         <div class="filter">
+            <ButtonFilterOpen />
+            <ButtonFilterInProgress />
             <ButtonFilterComplete />
             <ButtonFilterArchiv />
         </div>

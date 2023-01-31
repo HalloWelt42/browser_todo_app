@@ -7,7 +7,7 @@
     }
 </script>
 
-<div class="archived" on:click={handleClick}>
+<div class="archived" on:click={handleClick} title="archivierte Aufgaben filtern">
     {#if $modus.todos_show_archived === true}
         <i class="icon active fa-solid fa-box-archive"></i>
     {/if}

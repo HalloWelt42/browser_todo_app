@@ -49,7 +49,7 @@
     }
 </script>
 
-<button
+<button title="Aufgaben über Kategorie filtern"
         class="category-button list button is-link {danger}"
         on:click={() => toggleCategorySelected(item.id)}
         class:is-light={!item.selected && danger !== 'danger'}>

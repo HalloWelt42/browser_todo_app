@@ -1,5 +1,7 @@
 <script lang="ts">
 
+    import {fade, fly} from "svelte/transition";
+    import {flip} from "svelte/animate";
     import {info, modus, todo_manager} from "./todo_manager";
     import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
     import DeleteButton from "./components/buttons/DeleteButton.svelte";
@@ -19,13 +21,13 @@
         $todo_manager = $todo_manager;
     }
 
-    function filter(item):boolean {
-        return      $todo_manager.isOneCategoriesSelected(item.categories)
-                &&  (
-                        item.status === 'open'          && $modus.todos_show_open === true
-                    ||  item.status === 'completed'     && $modus.todos_show_completed === true
-                    ||  item.status === 'in_progress'   && $modus.todos_show_in_progress === true
-                    ||  item.status === 'archived'      && $modus.todos_show_archived === true
+    function filter(item): boolean {
+        return $todo_manager.isOneCategoriesSelected(item.categories)
+            && (
+                item.status === 'open' && $modus.todos_show_open === true
+                || item.status === 'completed' && $modus.todos_show_completed === true
+                || item.status === 'in_progress' && $modus.todos_show_in_progress === true
+                || item.status === 'archived' && $modus.todos_show_archived === true
             );
     }
 
@@ -36,10 +38,10 @@
     {#if $todo_manager.getTodos().length > 0}
         <div class="filter is-size-4">
             <i class="fa-solid fa-filter is-size-5"></i>
-            <ButtonFilterOpen />
-            <ButtonFilterInProgress />
-            <ButtonFilterComplete />
-            <ButtonFilterArchiv />
+            <ButtonFilterOpen/>
+            <ButtonFilterInProgress/>
+            <ButtonFilterComplete/>
+            <ButtonFilterArchiv/>
         </div>
         <table class="table">
             <thead>
@@ -49,9 +51,13 @@
             <th></th>
             <th></th>
             </thead>
-            {#each $todo_manager.getTodos() as item}
-                {#if filter(item)}
-                    <tr>
+            {#each $todo_manager.getTodos() as item, index (item.id)}
+                <tr
+                        animate:flip={{ duration: 300 }}
+                        in:fly|local={{ x: -80, duration: 300 }}
+                        out:fly|local={{ x: +80, duration: 300 }}
+                >
+                    {#if filter(item)}
                         <!-- status -->
                         <td on:click={() => switch_status(item.id)}>
                             {#if item.status === "open"}
@@ -81,8 +87,8 @@
                         <td on:click={() => deleteTodo(item.id)} on:click|stopPropagation>
                             <DeleteButton/>
                         </td>
-                    </tr>
-                {/if}
+                    {/if}
+                </tr>
             {/each}
         </table>
     {/if}

@@ -13,7 +13,7 @@
 
 	<div class="tool-container">
 		<div class="tool button is-white" on:click={addListItem}>
-			<i class="fas fa-plus icon"></i>&nbsp;&nbsp;neue Kategorie
+			<i class="fas fa-plus icon is-size-4"></i><span>neue Kategorie</span>
 		</div>
 	</div>
 

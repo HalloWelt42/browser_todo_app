@@ -1,11 +1,10 @@
 <script lang="ts">
     import {todo_manager} from "./todo_manager";
     import {Priority} from "./model/Priority";
-    import newUniqueId from "locally-unique-id-generator";
 
     function addTodo() {
         $todo_manager.addTodo({
-            id: newUniqueId(),
+            id: crypto.randomUUID(),
             name: "Aufgabe",
             status: "open",
             priority: Priority.low,
@@ -57,11 +56,6 @@
         align-items: center;
         justify-content: center;
         /*border: 1px solid red;*/
-    }
-
-    .text-container {
-        display: flex;
-        flex-direction: column;
     }
 
 </style>

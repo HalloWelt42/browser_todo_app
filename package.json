@@ -22,7 +22,6 @@
 	},
 	"dependencies": {
 		"bulma": "^0.9.4",
-		"locally-unique-id-generator": "^0.1.5",
 		"scss": "^0.2.4"
 	}
 }

@@ -128,4 +128,27 @@
     bottom: 0;
     height: 48px;
   }
+
+
+  :global(.badge-container) {
+    position: relative;
+  }
+
+  :global(.my-badge) {
+    display: flex;
+    position: absolute;
+    font-weight: bold;
+    font-size: 0.8rem;
+    z-index: 1;
+    left: 35px;
+    top: 2px;
+    padding-top: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px solid #fff;
+    color: #fff;
+    background: #00d1b2;
+    border-radius: 15px;
+  }
+
 </style>

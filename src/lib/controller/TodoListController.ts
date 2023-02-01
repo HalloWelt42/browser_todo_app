@@ -1,6 +1,7 @@
 import type {Todo} from "../model/Todo";
 import type {Category} from "../model/Category";
 import type {Priority} from "../model/Priority";
+import type {Status} from "../model/Status";
 
 export {TodoListController};
 
@@ -77,6 +78,16 @@ class TodoListController {
                     count++;
                 }
             });
+        });
+        return count;
+    }
+
+    getTodosCountStatus(status_name: Status): number {
+        let count = 0;
+        this.todos.forEach((todo) => {
+            if(todo.status === status_name){
+                count++;
+            }
         });
         return count;
     }

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { todo_manager } from "../../todo_manager";
 	import { Priority } from "../../model/Priority";
+	import {clickOutside} from "../../helper/click_outside";
 
 	export let item;
 	// let priority_keys = Object.keys(Priority).filter(k => typeof Priority[k as any] === "number");
@@ -14,7 +15,13 @@
 		$todo_manager.setTodoPriority(id, priority);
 		$todo_manager = $todo_manager;
 	}
+
+	function handleClickOutside() {
+		active = false;
+	}
+
 </script>
+
 
 <div class="dropdown" class:is-active={active}>
 	<!-- trigger -->
@@ -31,7 +38,7 @@
 		</button>
 	</div>
 	<!-- menu -->
-	<div class="dropdown-menu" role="menu">
+	<div class="dropdown-menu" role="menu" use:clickOutside on:click_outside={handleClickOutside}>
 		<div class="dropdown-content" on:click={toggle}>
 			{#each Object.entries(Priority) as [priority, priority]}
 				<a
@@ -42,6 +49,7 @@
 		</div>
 	</div>
 </div>
+
 
 <style>
 	.prio {
@@ -65,4 +73,9 @@
 		color: hsl(348, 86%, 43%);
 		border-color: hsl(348, 86%, 43%);
 	}
+
+	.dropdown-content{
+		width: 100px;
+	}
+
 </style>

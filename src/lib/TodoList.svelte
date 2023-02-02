@@ -10,6 +10,7 @@
     import ButtonFilterComplete from "./components/buttons/ButtonFilterComplete.svelte";
     import ButtonFilterInProgress from "./components/buttons/ButtonFilterInProgress.svelte";
     import ButtonFilterOpen from "./components/buttons/ButtonFilterOpen.svelte";
+    import DropDownCategoriesSelect from "./components/DropDownCategoriesSelect/DropDownCategoriesSelect.svelte";
 
     function switch_status(id) {
         $todo_manager.toggleTodoStatus(id);
@@ -78,7 +79,9 @@
                             <Todo {item}/>
                         </td>
                         <!-- categories edit -->
-                        <td></td>
+                        <td>
+                            <DropDownCategoriesSelect {item}/>
+                        </td>
                         <!-- priorities switcher -->
                         <td>
                             <DropDownPrio {item}/>

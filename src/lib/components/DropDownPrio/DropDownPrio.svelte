@@ -4,20 +4,19 @@
 	import {clickOutside} from "../../helper/click_outside";
 
 	export let item;
-	// let priority_keys = Object.keys(Priority).filter(k => typeof Priority[k as any] === "number");
+
 	let active = false;
 
 	function toggle() {
 		active = !active;
 	}
+	function handleClickOutside() {
+		active = false;
+	}
 
 	function changePrio(id: string, priority: Priority): void {
 		$todo_manager.setTodoPriority(id, priority);
 		$todo_manager = $todo_manager;
-	}
-
-	function handleClickOutside() {
-		active = false;
 	}
 
 </script>

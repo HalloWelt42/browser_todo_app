@@ -1,202 +1,203 @@
-import type {Todo} from "../model/Todo";
-import type {Category} from "../model/Category";
-import type {Priority} from "../model/Priority";
-import type {Status} from "../model/Status";
+import type { Todo } from "../model/Todo";
+import type { Category } from "../model/Category";
+import type { Priority } from "../model/Priority";
+import type { Status } from "../model/Status";
 
-export {TodoListController};
+export { TodoListController };
 
 class TodoListController {
-    private todos: Todo[];
-    private categories: Category[];
-    private default_category: string;
+	private todos: Todo[];
+	private categories: Category[];
+	private default_category: string;
 
-    constructor() {
-        const ToDoStore = JSON.parse(localStorage.getItem("todo")) || {};
-        this.todos = ToDoStore.todos || [];
-        this.categories = ToDoStore.categories || [];
-        this.default_category = "Kategorie";
-    }
+	constructor() {
+		const ToDoStore = JSON.parse(localStorage.getItem("todo")) || {};
+		this.todos = ToDoStore.todos || [];
+		this.categories = ToDoStore.categories || [];
+		this.default_category = "Kategorie";
+	}
 
-    saveTodo() {
-        localStorage.setItem(
-            "todo",
-            JSON.stringify({
-                todos: this.todos,
-                categories: this.categories,
-            })
-        );
-    }
+	getCategories(): Category[] {
+		return this.categories;
+	}
 
-    addCategory(category: Category): void {
-        this.categories.push(category);
-    }
+	getTodos(): Todo[] {
+		return this.todos;
+	}
 
-    updateCategoryName(id: string, name: string): void {
-        const index = this.categories.findIndex((category) => {
-            return category.id === id;
-        });
-        this.categories[index].name = name;
-    }
+	getTodosCountBy(category_name: string): number {
+		let count = 0;
+		this.todos.forEach((todo) => {
+			todo.categories.forEach((category) => {
+				if (category === category_name) {
+					count++;
+				}
+			});
+		});
+		return count;
+	}
 
-    getCategoryName(id: string): string {
-        const index = this.categories.findIndex((category) => {
-            return category.id === id;
-        });
-        return this.categories[index].name;
-    }
+	getTodosCountStatus(status_name: Status): number {
+		let count = 0;
+		this.todos.forEach((todo) => {
+			if (todo.status === status_name) {
+				count++;
+			}
+		});
+		return count;
+	}
 
-    existsCategoryName(name: string): boolean {
-        const index = this.categories.findIndex((category) => {
-            return category.name === name;
-        });
-        return index !== -1;
-    }
+	getCategoriesCount(): number {
+		let count = 0;
+		this.categories.forEach((categorie) => {
+			if (categorie.selected === true) {
+				count++;
+			}
+		});
+		return count;
+	}
 
-    deleteCategory(id: string): void {
-        this.categories = this.categories.filter((category) => {
-            return category.id !== id;
-        });
-    }
+	getIdsFromSelectedCategories(): string[] {
+		const ids = [];
+		this.categories.forEach((category) => {
+			if (category.selected === true) {
+				ids.push(category.id);
+			}
+		});
+		return ids;
+	}
 
-    toggleCategorySelected(id: string) {
-        const index = this.categories.findIndex((category) => {
-            return category.id === id;
-        });
+	addCategory(category: Category): void {
+		this.categories.push(category);
+	}
 
-        this.categories[index].selected = !this.categories[index].selected;
-    }
+	addTodo(todo: Todo): void {
+		// get all selected categories
+		todo.categories = this.getIdsFromSelectedCategories();
+		this.todos.push(todo);
+	}
 
-    getCategories(): Category[] {
-        return this.categories;
-    }
+	existsCategoryInCategories(category_ids: Category[], find_id): boolean {
+		return category_ids.some((category_id) => {
+			return category_id === find_id;
+		});
+	}
 
-    getTodosCountBy(category_name: string): number {
-        let count = 0;
-        this.todos.forEach((todo) => {
-            todo.categories.forEach((category) => {
-                if (category === category_name) {
-                    count++;
-                }
-            });
-        });
-        return count;
-    }
+	deleteCategory(id: string): void {
+		this.categories = this.categories.filter((category) => {
+			return category.id !== id;
+		});
+	}
 
-    getTodosCountStatus(status_name: Status): number {
-        let count = 0;
-        this.todos.forEach((todo) => {
-            if(todo.status === status_name){
-                count++;
-            }
-        });
-        return count;
-    }
+	toggleCategorySelected(id: string): void {
+		const index = this.categories.findIndex((category) => {
+			return category.id === id;
+		});
 
-    getCategoriesCount(): number {
-        let count = 0;
-        this.categories.forEach((categorie) => {
-            if (categorie.selected === true) {
-                count++;
-            }
-        });
-        return count;
-    }
+		this.categories[index].selected = !this.categories[index].selected;
+	}
 
-    getIdsFromSelectedCategories(): string[] {
-        const ids = [];
-        this.categories.forEach((category) => {
-            if (category.selected === true) {
-                ids.push(category.id);
-            }
-        });
-        return ids;
-    }
+	toggleItemCategory(category_id, todo_id): void {
+		// find a todo
+		let todo_index = this.todos.findIndex((todo) => {
+			return todo.id === todo_id;
+		});
+		// don't find todo -> get a break
+		if (todo_index === -1) {
+			return;
+		}
+		// find a category-id in todo
+		let todo_category_index = this.todos[todo_index].categories.findIndex((todo_category_id) => {
+			return todo_category_id === category_id;
+		});
+		// if don't find category_id in categories from todo
+		if (todo_category_index === -1) {
+			this.todos[todo_index].categories.push(category_id);
+		} else {
+			// find index in categories of selected todo
+			// have only one category in todo then break
+			if (this.todos[todo_index].categories.length === 1) {
+				return;
+			}
+			this.todos[todo_index].categories.splice(todo_category_index, 1);
+		}
+	}
 
-    getIdFromCategory(name: string): string {
-        let id = "";
-        this.categories.forEach((category) => {
-            if (category.name === name) {
-                id = category.id;
-                return;
-            }
-        });
-        return id;
-    }
+	toggleTodoStatus(id: string) {
+		const index = this.todos.findIndex((todo) => {
+			return todo.id === id;
+		});
 
-    toggleTodoStatus(id: string) {
-        const index = this.todos.findIndex((todo) => {
-            return todo.id === id;
-        });
+		const status = this.todos[index].status;
 
-        const status = this.todos[index].status;
+		switch (status) {
+			case "open":
+				this.todos[index].status = "in_progress";
+				break;
+			case "in_progress":
+				this.todos[index].status = "completed";
+				break;
+			case "completed":
+				this.todos[index].status = "archived";
+				break;
+		}
+	}
 
-        switch (status) {
-            case "open":
-                this.todos[index].status = "in_progress";
-                break;
-            case "in_progress":
-                this.todos[index].status = "completed";
-                break;
-            case "completed":
-                this.todos[index].status = "archived";
-                break;
-        }
-    }
+	setTodoPriority(id: string, priority: Priority): void {
+		const index = this.todos.findIndex((todo) => {
+			return todo.id === id;
+		});
+		this.todos[index].priority = priority;
+	}
 
-    getTodos(): Todo[] {
-        return this.todos;
-    }
+	deleteTodo(id: string): void {
+		const index = this.todos.findIndex((todo) => {
+			return todo.id === id;
+		});
+		this.todos.splice(index, 1);
+	}
 
-    setTodoPriority(id: string, priority: Priority): void {
-        const index = this.todos.findIndex((todo) => {
-            return todo.id === id;
-        });
-        this.todos[index].priority = priority;
-    }
+	updateCategoryName(id: string, name: string): void {
+		const index = this.categories.findIndex((category) => {
+			return category.id === id;
+		});
+		this.categories[index].name = name;
+	}
 
-    addTodo(todo: Todo): void {
-        // get all selected categories
-        todo.categories = this.getIdsFromSelectedCategories();
-        this.todos.push(todo);
-    }
+	updateTodoName(id: string, name: string): void {
+		const index = this.todos.findIndex((todo) => {
+			return todo.id === id;
+		});
+		this.todos[index].name = name;
+	}
 
-    deleteTodo(id: string): void {
-        const index = this.todos.findIndex((todo) => {
-            return todo.id === id;
-        });
-        this.todos.splice(index, 1);
-    }
+	isOneCategoriesSelected(todo_category_ids: string[]): boolean {
+		let categories_selected_ids = this.getIdsFromSelectedCategories();
 
-    updateTodoName(id: string, name: string): void {
-        const index = this.todos.findIndex((todo) => {
-            return todo.id === id;
-        });
-        this.todos[index].name = name;
-    }
+		if (categories_selected_ids.length === 0) {
+			return false;
+		}
 
-    getIndexFromTodo(id: string): number {
-        return this.todos.findIndex((todo) => {
-            return todo.id === id;
-        });
-    }
+		for (let category_id of categories_selected_ids) {
+			if (
+				todo_category_ids.some((todo_category_id) => {
+					return todo_category_id === category_id;
+				}) === true
+			) {
+				return true;
+			}
+		}
 
-    isOneCategoriesSelected(todo_category_ids: string[]): boolean {
-        let categories_selected_ids = this.getIdsFromSelectedCategories();
+		return false;
+	}
 
-        if (categories_selected_ids.length === 0) {
-            return false;
-        }
-
-        for (let category_id of categories_selected_ids) {
-            if (todo_category_ids.some((todo_category_id) => {
-                return todo_category_id === category_id
-            }) === true) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
+	saveTodo() {
+		localStorage.setItem(
+			"todo",
+			JSON.stringify({
+				todos: this.todos,
+				categories: this.categories,
+			})
+		);
+	}
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { todo_manager } from "../../todo_manager";
 	import { Priority } from "../../model/Priority";
-	import {clickOutside} from "../../helper/click_outside";
+	import { clickOutside } from "../../helper/click_outside";
 
 	export let item;
 
@@ -10,6 +10,7 @@
 	function toggle() {
 		active = !active;
 	}
+
 	function handleClickOutside() {
 		active = false;
 	}
@@ -18,9 +19,7 @@
 		$todo_manager.setTodoPriority(id, priority);
 		$todo_manager = $todo_manager;
 	}
-
 </script>
-
 
 <div class="dropdown" class:is-active={active}>
 	<!-- trigger -->
@@ -32,7 +31,7 @@
 			on:click={toggle}>
 			<span>Priorität</span>
 			<span class="icon is-small">
-				<i class="fas fa-angle-down" aria-hidden="true"></i>
+				<i class="fas fa-angle-down" aria-hidden="true" />
 			</span>
 		</button>
 	</div>
@@ -48,7 +47,6 @@
 		</div>
 	</div>
 </div>
-
 
 <style>
 	.prio {
@@ -73,8 +71,7 @@
 		border-color: hsl(348, 86%, 43%);
 	}
 
-	.dropdown-content{
+	.dropdown-content {
 		width: 100px;
 	}
-
 </style>

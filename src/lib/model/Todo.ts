@@ -1,6 +1,6 @@
 import type { Status } from "./Status";
 import type { Priority } from "./Priority";
-import type {Category} from "./Category";
+import type { Category } from "./Category";
 
 interface Todo {
 	id: string;

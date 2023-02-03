@@ -12,7 +12,7 @@ Alle Einträge, werden dauerhaft im LocaleStorage des Browsers gespeichert.
 * Aufgaben anlegen, löschen, bearbeiten
 * Kategorien anlegen, löschen, bearbeiten
 * Aufgaben einer oder mehreren Kategorien zuordnen
-* Aufgaben nach (offen, erledigt, laufend, archiviert) filtern
+* Aufgaben nach (offen, erledigt, laufend, archiviert) und Kategorie filtern
 * Aufgaben Prioritäten (hoch, mittel, niedrig) setzen und ändern
 * Export und Import aktuell über localStorage des Browser möglich
 * Datenformat JSON

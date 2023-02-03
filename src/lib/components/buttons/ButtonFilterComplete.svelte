@@ -7,7 +7,11 @@
 	}
 </script>
 
-<div class="check badge-container" on:click={handleClick} title="erledigte Aufgaben filtern">
+<div
+	class="check badge-container"
+	on:click={handleClick}
+	on:keypress={handleClick}
+	title="erledigte Aufgaben filtern">
 	{#if $modus.todos_show_completed === true}
 		<i class="icon active fa-solid fa-circle-check">
 			{#if $todo_manager.getTodosCountStatus("completed") > 0}

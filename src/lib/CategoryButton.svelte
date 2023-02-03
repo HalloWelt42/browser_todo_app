@@ -5,7 +5,6 @@
 	import { modus } from "./todo_manager.js";
 
 	export let item;
-	export let categories_edit_active;
 
 	let danger = "";
 
@@ -66,7 +65,12 @@
 			on:focus={(event) => clearInput(item.id, event)}
 			bind:innerHTML={item.name}
 			on:click|stopPropagation />
-		<div class="delete-category" on:click={() => deleteCategory(item.id)} on:click|stopPropagation>
+		<div
+			class="delete-category"
+			on:click|stopPropagation
+			on:keypress={() => deleteCategory(item.id)}
+			on:click={() => deleteCategory(item.id)}
+			on:click|stopPropagation>
 			<DeleteButton />
 		</div>
 	{/if}

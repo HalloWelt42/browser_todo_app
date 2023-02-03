@@ -13,7 +13,7 @@
 			<button class="delete" on:click={toggle} />
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.
 			<strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum
-			rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+			rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum efficitur.
 		</div>
 		<slot />
 	</div>
@@ -23,9 +23,5 @@
 	.modal-content {
 		display: flex;
 		justify-content: center;
-	}
-
-	.button {
-		width: 200px;
 	}
 </style>

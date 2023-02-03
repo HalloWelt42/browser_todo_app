@@ -28,7 +28,8 @@
 			class="button {item.priority} is-small is-rounded"
 			aria-haspopup="true"
 			aria-controls="dropdown-menu"
-			on:click={toggle}>
+			on:click={toggle}
+			on:keypress={toggle}>
 			<span>Priorität</span>
 			<span class="icon is-small">
 				<i class="fas fa-angle-down" aria-hidden="true" />
@@ -37,11 +38,13 @@
 	</div>
 	<!-- menu -->
 	<div class="dropdown-menu" role="menu" use:clickOutside on:click_outside={handleClickOutside}>
-		<div class="dropdown-content" on:click={toggle}>
+		<div class="dropdown-content" on:click={toggle} on:keypress={toggle}>
 			{#each Object.entries(Priority) as [priority, priority]}
 				<a
+					href="#n"
 					class="dropdown-item"
 					on:click={() => changePrio(item.id, priority)}
+					on:keypress={() => changePrio(item.id, priority)}
 					class:is-active={item.priority === priority}>{priority}</a>
 			{/each}
 		</div>

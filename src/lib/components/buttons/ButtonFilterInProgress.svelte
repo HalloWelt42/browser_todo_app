@@ -7,7 +7,11 @@
 	}
 </script>
 
-<div class="in-progress badge-container" on:click={handleClick} title="laufende Aufgaben filtern">
+<div
+	class="in-progress badge-container"
+	on:click={handleClick}
+	on:keypress={handleClick}
+	title="laufende Aufgaben filtern">
 	{#if $modus.todos_show_in_progress === true}
 		<i class="icon active fa-solid fa-hourglass-half">
 			{#if $todo_manager.getTodosCountStatus("in_progress") > 0}

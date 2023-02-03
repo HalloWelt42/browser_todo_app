@@ -11,6 +11,10 @@
 </script>
 
 <a
+	href="#n"
 	class="dropdown-item"
 	class:is-active={$todo_manager.existsCategoryInCategories(item.categories, category.id)}
-	on:click|stopPropagation={toggleCategory(category.id, item.id)}>{category.name}</a>
+	on:click|stopPropagation={toggleCategory(category.id, item.id)}
+	on:keypress|stopPropagation={toggleCategory(category.id, item.id)}
+	>{category.name}
+</a>

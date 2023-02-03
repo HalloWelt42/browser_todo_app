@@ -7,7 +7,11 @@
 	}
 </script>
 
-<div class="archived badge-container" on:click={handleClick} title="archivierte Aufgaben filtern">
+<div
+	class="archived badge-container"
+	on:click={handleClick}
+	on:keypress={handleClick}
+	title="archivierte Aufgaben filtern">
 	{#if $modus.todos_show_archived === true}
 		<i class="icon active fa-solid fa-box-archive">
 			{#if $todo_manager.getTodosCountStatus("archived") > 0}

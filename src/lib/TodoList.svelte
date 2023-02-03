@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { fade, fly } from "svelte/transition";
+	import { fly } from "svelte/transition";
 	import { flip } from "svelte/animate";
-	import { info, modus, todo_manager } from "./todo_manager";
+	import { modus, todo_manager } from "./todo_manager";
 	import DropDownPrio from "./components/DropDownPrio/DropDownPrio.svelte";
 	import DeleteButton from "./components/buttons/DeleteButton.svelte";
 	import Todo from "./Todo.svelte";
@@ -45,7 +45,8 @@
 			<thead>
 				<th />
 				<th class="has-text-grey-light"
-					>insgesamt {$todo_manager.getTodos().length} Aufgaben vorhanden</th>
+					>insgesamt {$todo_manager.getTodos().length} Aufgaben vorhanden
+				</th>
 				<th />
 				<th />
 				<th />
@@ -57,7 +58,7 @@
 					out:fly|local={{ x: +80, duration: 300 }}>
 					{#if filter(item)}
 						<!-- status -->
-						<td on:click={() => switch_status(item.id)}>
+						<td on:click={() => switch_status(item.id)} on:keypress={() => switch_status(item.id)}>
 							{#if item.status === "open"}
 								<i class="open is-size-4 icon fa-regular fa-circle-check" />
 							{/if}
@@ -84,7 +85,11 @@
 							<DropDownPrio {item} />
 						</td>
 						<!-- delete -->
-						<td on:click={() => deleteTodo(item.id)} on:click|stopPropagation>
+						<td
+							on:click={() => deleteTodo(item.id)}
+							on:click|stopPropagation
+							on:keypress={() => deleteTodo(item.id)}
+							on:click|stopPropagation>
 							<DeleteButton />
 						</td>
 					{/if}
@@ -112,12 +117,6 @@
 
 			.todo {
 				width: 100%;
-
-				.todo-name {
-					font-weight: lighter;
-					font-size: 1.5rem;
-					outline: none;
-				}
 			}
 
 			.icon {
@@ -125,9 +124,6 @@
 				cursor: pointer;
 			}
 
-			.warning {
-				color: orangered;
-			}
 		}
 	}
 

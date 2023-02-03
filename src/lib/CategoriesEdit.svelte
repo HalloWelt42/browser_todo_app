@@ -6,7 +6,7 @@
 	}
 </script>
 
-<div class="edit" on:click={handleClick} title="Kategorien bearbeiten">
+<div class="edit" on:click={handleClick} on:keypress={handleClick} title="Kategorien bearbeiten">
 	{#if $modus.categories_edit_active === true}
 		<i class="icon active fa-regular fa-pen-to-square is-size-3" />
 	{/if}

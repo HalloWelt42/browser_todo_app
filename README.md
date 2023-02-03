@@ -16,3 +16,11 @@ Alle Einträge, werden dauerhaft im LocaleStorage des Browsers gespeichert.
 * Aufgaben Prioritäten (hoch, mittel, niedrig) setzen und ändern
 * Export und Import aktuell über localStorage des Browser möglich
 * Datenformat JSON
+
+
+### Eingesetze Technologien:
+* JavaScript-Framework [Svelte](https://svelte.dev/)
+* TypeScript
+* Stylesheets mit css, scss
+* HTML5
+

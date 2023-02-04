@@ -11,6 +11,8 @@
 	import TodoList from "./lib/TodoList.svelte";
 	import CategoriesEdit from "./lib/CategoriesEdit.svelte";
 
+	let mem = localStorage.getItem('todo').length;
+
 	$todo_manager = new TodoListController();
 	$modus = {
 		categories_edit_active: false,
@@ -28,6 +30,7 @@
 	// Trigger
 	$: {
 		$todo_manager.saveTodo();
+		mem = localStorage.getItem('todo').length;
 	}
 </script>
 
@@ -52,7 +55,7 @@
 		</section>
 	</main>
 	<footer>
-		<Statusbar />
+		<Statusbar bind:mem />
 	</footer>
 </div>
 

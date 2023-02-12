@@ -11,7 +11,7 @@
 	import TodoList from "./lib/TodoList.svelte";
 	import CategoriesEdit from "./lib/CategoriesEdit.svelte";
 
-	let mem = localStorage.getItem('todo').length;
+	let mem;
 
 	$todo_manager = new TodoListController();
 	$modus = {

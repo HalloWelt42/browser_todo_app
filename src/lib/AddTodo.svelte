@@ -2,10 +2,15 @@
 	import { todo_manager } from "./todo_manager";
 	import { Priority } from "./model/Priority";
 
+	let time = new Date().getTime();
 	function addTodo() {
 		$todo_manager.addTodo({
 			id: crypto.randomUUID(),
 			name: "Aufgabe",
+			create_time: time,
+			start_time: time,
+			duration_time: time,
+			end_time: time,
 			status: "open",
 			priority: Priority.low,
 			categories: [],

@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let mem;
+	export let mem = 0;
 
 	function convertDataUnit(size, sourceUnit = "Byte", targetUnit = "YB") {
 		let i;

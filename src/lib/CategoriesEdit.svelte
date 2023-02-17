@@ -6,7 +6,11 @@
 	}
 </script>
 
-<div class="edit" on:click={handleClick} on:keypress={handleClick} title="Kategorien bearbeiten">
+<div
+	class="task-icon edit"
+	on:click={handleClick}
+	on:keypress={handleClick}
+	title="Kategorien bearbeiten">
 	{#if $modus.categories_edit_active === true}
 		<i class="icon active fa-regular fa-pen-to-square is-size-3" />
 	{/if}
@@ -16,30 +20,4 @@
 </div>
 
 <style lang="scss">
-	@import "src/vars.scss";
-
-	.edit > .active {
-		color: $icon-active;
-	}
-
-	.edit {
-		display: flex;
-		gap: 15px;
-		align-items: center;
-		color: $icon-normal;
-		cursor: pointer;
-
-		&:hover {
-			color: $icon-hover;
-		}
-
-		&:active {
-			color: $icon-clicked;
-		}
-
-		.icon {
-			margin: 10px 20px 10px 20px;
-			padding: 10px;
-		}
-	}
 </style>

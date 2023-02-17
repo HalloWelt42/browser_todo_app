@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="check badge-container"
+	class="check"
 	on:click={handleClick}
 	on:keypress={handleClick}
 	title="erledigte Aufgaben filtern">

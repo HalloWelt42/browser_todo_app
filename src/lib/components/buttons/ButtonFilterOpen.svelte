@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="open badge-container"
+	class="open"
 	on:click={handleClick}
 	on:keypress={handleClick}
 	title="offene Aufgaben filtern">

@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="in-progress badge-container"
+	class="in-progress"
 	on:click={handleClick}
 	on:keypress={handleClick}
 	title="laufende Aufgaben filtern">

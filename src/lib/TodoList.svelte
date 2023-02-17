@@ -44,14 +44,16 @@
 		</div>
 		<table class="table">
 			<thead>
-				<th />
-				<th class="has-text-grey-light"
-					>insgesamt {$todo_manager.getTodos().length} Aufgaben vorhanden
-				</th>
-				<th />
-				<th />
-				<th />
-				<th />
+				<tr>
+					<th />
+					<th class="has-text-grey-light"
+						>insgesamt {$todo_manager.getTodos().length} Aufgaben vorhanden
+					</th>
+					<th />
+					<th />
+					<th />
+					<th />
+				</tr>
 			</thead>
 			{#each $todo_manager.getTodos() as item, index (item.id)}
 				<tr
@@ -134,5 +136,7 @@
 	.filter {
 		display: flex;
 		justify-content: flex-end;
+		gap: 15px;
+		margin-top: 5px;
 	}
 </style>

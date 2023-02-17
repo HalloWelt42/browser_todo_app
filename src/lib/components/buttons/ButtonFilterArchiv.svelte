@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="archived"
+	class="task-icon archived"
 	on:click={handleClick}
 	on:keypress={handleClick}
 	title="archivierte Aufgaben filtern">
@@ -29,30 +29,4 @@
 </div>
 
 <style lang="scss">
-	@import "src/vars.scss";
-
-	.archived > .active {
-		color: $icon-active;
-	}
-
-	.archived {
-		display: flex;
-		gap: 15px;
-		align-items: center;
-		color: $icon-normal;
-		cursor: pointer;
-
-		&:hover {
-			color: $icon-hover;
-		}
-
-		&:active {
-			color: $icon-clicked;
-		}
-
-		.icon {
-			margin: 10px 20px 10px 20px;
-			padding: 10px;
-		}
-	}
 </style>

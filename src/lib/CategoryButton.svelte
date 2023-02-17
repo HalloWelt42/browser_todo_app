@@ -50,7 +50,11 @@
 	<button
 		title="Aufgaben über Kategorie filtern"
 		class="category-button list button is-link {danger}"
-		on:click={() => toggleCategorySelected(item.id)}
+		on:click={() => {
+			if($modus.categories_edit_active === false){
+				toggleCategorySelected(item.id);
+			}
+		}}
 		class:is-light={!item.selected && danger !== "danger"}>
 		{#if $modus.categories_edit_active === true}
 			<div

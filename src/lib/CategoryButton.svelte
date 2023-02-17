@@ -46,37 +46,39 @@
 	}
 </script>
 
-<button
-	title="Aufgaben über Kategorie filtern"
-	class="category-button list button is-link {danger}"
-	on:click={() => toggleCategorySelected(item.id)}
-	class:is-light={!item.selected && danger !== "danger"}>
-	{#if $modus.categories_edit_active === true}
-		<div
-			class="name-field"
-			contenteditable="true"
-			on:keypress={(event) => saveByReturn(item.id, event)}
-			on:focusout={(event) => saveCategoryName(item.id, event)}
-			on:click={(event) => clearInput(item.id, event)}
-			on:focus={(event) => clearInput(item.id, event)}
-			bind:innerHTML={item.name}
-			on:click|stopPropagation />
-		<div
-			class="delete-category"
-			on:click|stopPropagation
-			on:keypress={() => deleteCategory(item.id)}
-			on:click={() => deleteCategory(item.id)}
-			on:click|stopPropagation>
-			<DeleteButton />
-		</div>
+<div class="badged-button">
+	<button
+		title="Aufgaben über Kategorie filtern"
+		class="category-button list button is-link {danger}"
+		on:click={() => toggleCategorySelected(item.id)}
+		class:is-light={!item.selected && danger !== "danger"}>
+		{#if $modus.categories_edit_active === true}
+			<div
+				class="name-field"
+				contenteditable="true"
+				on:keypress={(event) => saveByReturn(item.id, event)}
+				on:focusout={(event) => saveCategoryName(item.id, event)}
+				on:click={(event) => clearInput(item.id, event)}
+				on:focus={(event) => clearInput(item.id, event)}
+				bind:innerHTML={item.name}
+				on:click|stopPropagation />
+			<div
+				class="delete-category"
+				on:click|stopPropagation
+				on:keypress={() => deleteCategory(item.id)}
+				on:click={() => deleteCategory(item.id)}
+				on:click|stopPropagation>
+				<DeleteButton />
+			</div>
+		{/if}
+		{#if $modus.categories_edit_active === false}
+			{item.name}
+		{/if}
+	</button>
+	{#if $todo_manager.getTodosCountBy(item.id) > 0}
+		<div class="my-badge">{$todo_manager.getTodosCountBy(item.id)}</div>
 	{/if}
-	{#if $modus.categories_edit_active === false}
-		{item.name}
-	{/if}
-</button>
-{#if $todo_manager.getTodosCountBy(item.id) > 0}
-	<div class="my-badge">{$todo_manager.getTodosCountBy(item.id)}</div>
-{/if}
+</div>
 
 <style>
 	.delete-category {

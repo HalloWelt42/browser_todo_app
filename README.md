@@ -3,7 +3,7 @@ Diese App läuft vollständig im Browser.
 Alle Einträge, werden dauerhaft im LocaleStorage des Browsers gespeichert.
 
 ### *hier ausprobieren!*
-* live Demo : [... netlify.app](https://63e8c2dbcd15a263d8a34258--verdant-malasada-682f99.netlify.app/)
+* live Demo : [... netlify.app](https://63efb66ed891f6007f098c69--verdant-malasada-682f99.netlify.app/)
 
 ![screen_2023-02-03.png](public/screen_2023-02-03.png)
 
@@ -17,6 +17,8 @@ Alle Einträge, werden dauerhaft im LocaleStorage des Browsers gespeichert.
 * Export und Import aktuell über localStorage des Browser möglich
 * Datenformat JSON
 
+### Neu: 
+* time tracking
 
 ### Eingesetze Technologien:
 * JavaScript-Framework [Svelte](https://svelte.dev/)

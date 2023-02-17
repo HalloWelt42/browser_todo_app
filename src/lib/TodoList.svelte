@@ -136,7 +136,7 @@
 	.filter {
 		display: flex;
 		justify-content: flex-end;
-		gap: 15px;
+		gap: 30px;
 		margin-top: 5px;
 	}
 </style>

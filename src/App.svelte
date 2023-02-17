@@ -9,7 +9,7 @@
 	import ModalDialog from "./lib/ModalDialog.svelte";
 	import { TodoListController } from "./lib/controller/TodoListController";
 	import TodoList from "./lib/TodoList.svelte";
-	import CategoriesEdit from "./lib/CategoriesEdit.svelte";
+	import ButtonCategoriesEdit from "./lib/components/buttons/ButtonCategoriesEdit.svelte";
 
 	let mem;
 
@@ -42,7 +42,7 @@
 			<div class="categories-container">
 				<Categories />
 			</div>
-			<CategoriesEdit />
+			<ButtonCategoriesEdit />
 		</div>
 	</header>
 	<main>
@@ -87,7 +87,11 @@
 		margin-bottom: 54px;
 	}
 
-	.header-container,
+	.header-container {
+		display: flex;
+		align-items: center;
+	}
+
 	.categories-container {
 		display: flex;
 	}
@@ -127,30 +131,5 @@
 		position: fixed;
 		bottom: 0;
 		height: 48px;
-	}
-
-	:global(.my-badge) {
-		position: absolute;
-		font-weight: bold;
-		font-size: 0.8rem;
-		height: 21px;
-		z-index: 1;
-		right: -10px;
-		top: -10px;
-		padding: 2px 5px;
-		border: 2px solid #fff;
-		color: #fff;
-		background: #00d1b2;
-		border-radius: 15px;
-		line-height: 1;
-	}
-
-	:global(button .my-badge) {
-		left: 28px;
-		top: -15px;
-	}
-
-	:global(.badged-button) {
-		position: relative;
 	}
 </style>

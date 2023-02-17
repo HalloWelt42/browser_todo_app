@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="archived badge-container"
+	class="archived"
 	on:click={handleClick}
 	on:keypress={handleClick}
 	title="archivierte Aufgaben filtern">

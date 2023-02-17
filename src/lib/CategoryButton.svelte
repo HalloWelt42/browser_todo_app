@@ -8,10 +8,6 @@
 
 	let danger = "";
 
-	function categoryClasses(): string {
-		return danger;
-	}
-
 	function toggleCategorySelected(categoryId: string) {
 		$todo_manager.toggleCategorySelected(categoryId);
 		$todo_manager = $todo_manager;
@@ -77,10 +73,10 @@
 	{#if $modus.categories_edit_active === false}
 		{item.name}
 	{/if}
-	{#if $todo_manager.getTodosCountBy(item.id) > 0}
-		<div class="badge">&nbsp;{$todo_manager.getTodosCountBy(item.id)}&nbsp;</div>
-	{/if}
 </button>
+{#if $todo_manager.getTodosCountBy(item.id) > 0}
+	<div class="my-badge">{$todo_manager.getTodosCountBy(item.id)}</div>
+{/if}
 
 <style>
 	.delete-category {
@@ -105,12 +101,6 @@
 		padding-left: 2px;
 		color: #333;
 		background-color: hsla(0, 100%, 100%, 1);
-	}
-
-	.badge {
-		font-weight: bold;
-		font-size: 0.8rem;
-		z-index: 1;
 	}
 
 	.category-button.danger {

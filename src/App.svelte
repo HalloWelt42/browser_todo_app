@@ -29,7 +29,7 @@
 	// Trigger
 	$: {
 		$todo_manager.saveTodo();
-		mem = localStorage.getItem('todo').length;
+		mem = localStorage.getItem("todo").length;
 	}
 </script>
 
@@ -59,6 +59,8 @@
 </div>
 
 <style lang="scss">
+	@import "vars";
+
 	header,
 	main,
 	footer,
@@ -129,22 +131,49 @@
 		height: 48px;
 	}
 
+	:global(.task-icon) {
+		color: $icon-normal;
+		cursor: pointer;
+
+		&:hover {
+			color: $icon-hover;
+		}
+
+		&:active {
+			color: $icon-clicked;
+		}
+
+		& > .active {
+			color: $icon-active;
+		}
+
+		& > .icon {
+			position: relative;
+		}
+	}
+
 	:global(.my-badge) {
-		position: relative;
+		position: absolute;
 		font-weight: bold;
 		font-size: 0.8rem;
 		height: 21px;
 		z-index: 1;
-		left: -5px;
+		right: -10px;
 		top: -10px;
 		padding: 2px 5px;
 		border: 2px solid #fff;
 		color: #fff;
 		background: #00d1b2;
 		border-radius: 15px;
+		line-height: 1;
 	}
-	:global(button .my-badge){
+
+	:global(button .my-badge) {
 		left: 28px;
 		top: -15px;
+	}
+
+	:global(.badged-button) {
+		position: relative;
 	}
 </style>

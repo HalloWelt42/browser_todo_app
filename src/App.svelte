@@ -59,8 +59,6 @@
 </div>
 
 <style lang="scss">
-	@import "vars";
-
 	header,
 	main,
 	footer,
@@ -129,27 +127,6 @@
 		position: fixed;
 		bottom: 0;
 		height: 48px;
-	}
-
-	:global(.task-icon) {
-		color: $icon-normal;
-		cursor: pointer;
-
-		&:hover {
-			color: $icon-hover;
-		}
-
-		&:active {
-			color: $icon-clicked;
-		}
-
-		& > .active {
-			color: $icon-active;
-		}
-
-		& > .icon {
-			position: relative;
-		}
 	}
 
 	:global(.my-badge) {

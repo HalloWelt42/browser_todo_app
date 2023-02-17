@@ -123,7 +123,7 @@ class TodoListController {
 		}
 	}
 
-	toggleTodoStatus(id: string) {
+	toggleTodoStatus(id: string): void {
 		const index = this.todos.findIndex((todo) => {
 			return todo.id === id;
 		});
@@ -133,14 +133,26 @@ class TodoListController {
 		switch (status) {
 			case "open":
 				this.todos[index].status = "in_progress";
+				this.todos[index].start_time = new Date().getTime();
 				break;
 			case "in_progress":
 				this.todos[index].status = "completed";
+				this.todos[index].end_time = new Date().getTime();
 				break;
 			case "completed":
 				this.todos[index].status = "archived";
 				break;
 		}
+	}
+
+	setOpenStatus(id: string): void {
+		const index = this.todos.findIndex((todo) => {
+			return todo.id === id;
+		});
+		let time = new Date().getTime();
+		this.todos[index].status = "open";
+		this.todos[index].duration_time = this.todos[index].duration_time + time -this.todos[index].start_time;
+		this.todos[index].start_time = time;
 	}
 
 	setTodoPriority(id: string, priority: Priority): void {

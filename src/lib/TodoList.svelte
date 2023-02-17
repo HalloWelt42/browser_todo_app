@@ -10,6 +10,7 @@
 	import ButtonFilterInProgress from "./components/buttons/ButtonFilterInProgress.svelte";
 	import ButtonFilterOpen from "./components/buttons/ButtonFilterOpen.svelte";
 	import DropDownCategoriesSelect from "./components/DropDownCategoriesSelect/DropDownCategoriesSelect.svelte";
+	import StatStopTimer from "./components/timer/StatStopTimer.svelte";
 
 	function switch_status(id) {
 		$todo_manager.toggleTodoStatus(id);
@@ -50,6 +51,7 @@
 				<th />
 				<th />
 				<th />
+				<th />
 			</thead>
 			{#each $todo_manager.getTodos() as item, index (item.id)}
 				<tr
@@ -75,6 +77,9 @@
 						<!-- toto name -->
 						<td class="todo">
 							<Todo {item} />
+						</td>
+						<td>
+							<StatStopTimer {item} />
 						</td>
 						<!-- categories edit -->
 						<td>
@@ -123,7 +128,6 @@
 				color: hsla(0, 0%, 90%, 1);
 				cursor: pointer;
 			}
-
 		}
 	}
 

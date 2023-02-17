@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { todo_manager } from "./todo_manager";
-	import { text_sanitizer } from "./helper/text_sanitizer";
+	import { textSanitizer } from "./helper/text_sanitizer";
 
 	export let item;
 
@@ -12,7 +12,7 @@
 	}
 
 	function saveTodoName(id: string, e): void {
-		let text = text_sanitizer(e.target.innerHTML, "Aufgabe");
+		let text = textSanitizer(e.target.innerHTML, "Aufgabe");
 		$todo_manager.updateTodoName(id, text);
 		$todo_manager = $todo_manager;
 	}

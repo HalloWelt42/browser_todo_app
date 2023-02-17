@@ -1,4 +1,4 @@
-function text_sanitizer(content: string, default_text = ""): string {
+function textSanitizer(content: string, default_text = ""): string {
 	const maxLength = 50;
 
 	// Entferne alle Tags aus dem eingegebenen Text
@@ -28,4 +28,4 @@ function text_sanitizer(content: string, default_text = ""): string {
 	return plainText;
 }
 
-export { text_sanitizer };
+export { textSanitizer };

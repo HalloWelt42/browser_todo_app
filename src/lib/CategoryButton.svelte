@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { text_sanitizer } from "./helper/text_sanitizer";
+	import { textSanitizer } from "./helper/text_sanitizer";
 	import { todo_manager } from "./todo_manager";
 	import DeleteButton from "./components/buttons/DeleteButton.svelte";
 	import { modus } from "./todo_manager.js";
@@ -30,7 +30,7 @@
 	}
 
 	function saveCategoryName(id: string, e) {
-		let text = text_sanitizer(e.target.innerHTML, "Kategorie");
+		let text = textSanitizer(e.target.innerHTML, "Kategorie");
 		$todo_manager.updateCategoryName(id, text);
 		$todo_manager = $todo_manager;
 	}

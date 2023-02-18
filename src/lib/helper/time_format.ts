@@ -22,7 +22,7 @@ class TimeFormat {
 	}
 
 	getTimeHoursMinutesSecounds(): string {
-		const colon_separator = ':';
+		const colon_separator = ":";
 		return `${this.getHours()}${colon_separator}${this.getMinutes()}${colon_separator}${this.getSecond()}`;
 	}
 

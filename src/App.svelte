@@ -9,13 +9,11 @@
 	import ModalDialog from "./lib/ModalDialog.svelte";
 	import { TodoListController } from "./lib/controller/TodoListController";
 	import TodoList from "./lib/TodoList.svelte";
-	import ButtonCategoriesEdit from "./lib/components/buttons/ButtonCategoriesEdit.svelte";
 
 	let mem;
 
 	$todo_manager = new TodoListController();
 	$modus = {
-		categories_edit_active: false,
 		todos_show_open: true,
 		todos_show_in_progress: true,
 		todos_show_completed: false,
@@ -42,7 +40,6 @@
 			<div class="categories-container">
 				<Categories />
 			</div>
-			<ButtonCategoriesEdit />
 		</div>
 	</header>
 	<main>
@@ -97,7 +94,7 @@
 	}
 
 	.categories-container {
-		padding: 8px 0;
+		padding: 15px 0;
 	}
 
 	.categories-container {

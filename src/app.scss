@@ -20,7 +20,7 @@ label {
   align-items: center;
 }
 
-.task-icon,.timer-icon {
+.task-icon, .timer-icon {
 
   color: $icon-normal;
   cursor: pointer;
@@ -42,7 +42,7 @@ label {
   }
 }
 
-.my-badge {
+.badge {
   position: absolute;
   font-weight: bold;
   font-size: 0.8rem;
@@ -58,11 +58,43 @@ label {
   line-height: 1;
 }
 
-button .my-badge {
+.edit-badge {
+  position: absolute;
+  z-index: 2;
+  right: -20px;
+  top: -15px;
+  padding: 3px;
+  border-radius: 5px;
+  line-height: 1;
+  background: hsla(0, 0%, 0%, 0.03);
+  border: none;
+}
+
+.edit-badge:hover {
+  background: #fff;
+  box-shadow: 4px 4px 10px hsla(0, 0%, 0%, 0.2);
+}
+
+button .badge {
   left: 28px;
   top: -15px;
 }
 
-.badged-button {
+.badged-button-container {
+  cursor: pointer;
   position: relative;
+}
+
+.badged-button {
+  color: rgba(10, 10, 10, 0.2);
+  font-size: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(10, 10, 10, 0.3);
+  }
+
+  &:active {
+    color: rgba(10, 10, 10, 0.4);
+  }
 }

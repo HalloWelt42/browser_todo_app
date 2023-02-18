@@ -11,6 +11,7 @@
 	import TodoList from "./lib/TodoList.svelte";
 
 	let mem;
+	let save_data_animation;
 
 	$todo_manager = new TodoListController();
 	$modus = {
@@ -27,7 +28,11 @@
 	// Trigger
 	$: {
 		$todo_manager.saveTodo();
-		mem = localStorage.getItem("todo").length;
+		let old_mem = localStorage.getItem("todo").length;
+		if(old_mem !== mem){
+			save_data_animation = true;
+		}
+		mem = old_mem;
 	}
 </script>
 
@@ -51,7 +56,7 @@
 		</section>
 	</main>
 	<footer>
-		<Statusbar bind:mem />
+		<Statusbar bind:mem bind:save_data_animation/>
 	</footer>
 </div>
 

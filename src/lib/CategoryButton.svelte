@@ -9,7 +9,7 @@
 
 	let css_class_danger = "";
 	let edit_mode = false;
-	let visible = false;
+	let save_data_animation;
 
 	function init(element) {
 		element.focus();
@@ -46,7 +46,7 @@
 	function saveCategoryName(id: string, e) {
 		let text = textSanitizer(e.target.innerHTML, "Kategorie");
 		edit_mode = false;
-		visible = true;
+		save_data_animation = true;
 		$todo_manager.updateCategoryName(id, text);
 		$todo_manager = $todo_manager;
 	}
@@ -100,7 +100,9 @@
 			{item.name}
 		</button>
 	{/if}
-	<ConditionalDisplay bind:visible/>
+	<div class="conditional-display-bl">
+		<ConditionalDisplay bind:save_data_animation />
+	</div>
 </div>
 
 <style lang="scss">
@@ -108,31 +110,31 @@
 		display: flex;
 		align-items: center;
 	}
-
 	.category-button:hover ~ .badge,
 	.edit-badge:hover ~ .badge {
 		display: none;
 	}
-
 	.edit-badge {
 		display: none;
 	}
-
 	.category-button:hover ~ .edit-badge,
 	.edit-badge:hover {
 		display: flex;
 	}
-
 	.danger {
 		background: hsl(348, 86%, 43%);
 		color: #fff;
 	}
-
 	.badged-button-container .name-field {
 		min-width: 110px;
 		color: hsl(217deg, 71%, 53%);
 		background-color: #fff;
 		border-color: black;
 		border-width: 2px;
+	}
+	.conditional-display-bl {
+		position: absolute;
+		right: -5px;
+		bottom: -10px;
 	}
 </style>

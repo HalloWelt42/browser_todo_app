@@ -1,29 +1,24 @@
 <script lang="ts">
-	export let visible = true;
+	export let save_data_animation;
 
     $:{
-        visible;
+        save_data_animation;
         setTimeout(()=>{
-            visible = false;
-        },1500);
+            save_data_animation = false;
+        },0);
     }
 </script>
 
-<i class="conditional-display-bl fa-solid fa-floppy-disk is-size-3 has-text-success {visible ? 'show':'fade-out'}" />
+<i class="fa-solid fa-floppy-disk is-size-3 has-text-success {save_data_animation ? 'show':'fade-out'}" />
 
 <style lang="scss">
-	.conditional-display-bl {
-		position: absolute;
-		right: -5px;
-		bottom: -10px;
-	}
-
 	.show {
       visibility: visible;
 	}
 
 	.fade-out {
 		transition: opacity 1s;
+        animation-timing-function: ease;
 		opacity: 0;
 	}
 </style>

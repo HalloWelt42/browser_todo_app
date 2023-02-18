@@ -63,8 +63,8 @@
 	}
 </script>
 
-{#if edit_mode === false}
-	<div class="badged-button-container {css_class_danger}">
+<div class="badged-button-container {css_class_danger}">
+	{#if edit_mode === false}
 		<button
 			title="Aufgaben über Kategorie filtern"
 			class="category-button list button is-link {css_class_danger}"
@@ -80,24 +80,24 @@
 		{#if $todo_manager.getTodosCountBy(item.id) > 0}
 			<div class="badge">{$todo_manager.getTodosCountBy(item.id)}</div>
 		{/if}
-	</div>
-{/if}
-{#if edit_mode === true}
-	<button
-		title="Aufgaben über Kategorie filtern"
-		class="name-field category-button list button is-link"
-		contenteditable="true"
-		on:keypress={(event) => saveByReturn(item.id, event)}
-		on:focusout={(event) => saveCategoryName(item.id, event)}
-		on:click={(event) => clearInput(item.id, event)}
-		on:focus={(event) => clearInput(item.id, event)}
-		bind:innerHTML={item.name}
-		on:click|stopPropagation
-		use:init
-		class:is-light={!item.selected && css_class_danger !== "css_class_danger"}>
-		{item.name}
-	</button>
-{/if}
+	{/if}
+	{#if edit_mode === true}
+		<button
+			title="Aufgaben über Kategorie filtern"
+			class="name-field category-button list button is-link"
+			contenteditable="true"
+			on:keypress={(event) => saveByReturn(item.id, event)}
+			on:focusout={(event) => saveCategoryName(item.id, event)}
+			on:click={(event) => clearInput(item.id, event)}
+			on:focus={(event) => clearInput(item.id, event)}
+			bind:innerHTML={item.name}
+			on:click|stopPropagation
+			use:init
+			class:is-light={!item.selected && css_class_danger !== "css_class_danger"}>
+			{item.name}
+		</button>
+	{/if}
+</div>
 
 <style lang="scss">
 	.category-button {
@@ -124,7 +124,7 @@
 		color: #fff;
 	}
 
-	.name-field {
+	.badged-button-container .name-field {
 		min-width: 110px;
 		color: hsl(217deg, 71%, 53%);
 		background-color: #fff;

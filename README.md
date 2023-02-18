@@ -3,7 +3,7 @@ Diese App läuft vollständig im Browser.
 Alle Einträge, werden dauerhaft im LocaleStorage des Browsers gespeichert.
 
 ### *hier ausprobieren!*
-* live Demo : [... netlify.app](https://63f121f92f13dd00082e609a--verdant-malasada-682f99.netlify.app/)
+* live Demo : [... netlify.app](https://browser-todo-app.netlify.app/)
 
 ![screen_2023-02-03.png](public/screen_2023-02-03.png)
 

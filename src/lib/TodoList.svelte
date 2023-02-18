@@ -97,7 +97,7 @@
 							on:click|stopPropagation
 							on:keypress={() => deleteTodo(item.id)}
 							on:click|stopPropagation>
-							<DeleteButton />
+							<DeleteButton title="Aufgabe löschen" />
 						</td>
 					{/if}
 				</tr>

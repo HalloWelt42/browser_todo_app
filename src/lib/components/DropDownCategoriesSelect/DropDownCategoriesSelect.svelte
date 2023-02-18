@@ -20,7 +20,7 @@
 	<!-- trigger -->
 	<div class="dropdown-trigger">
 		<button
-			class="button is-small is-rounded"
+			class="button is-small is-rounded has-text-grey"
 			aria-haspopup="true"
 			aria-controls="dropdown-menu"
 			on:click={toggle}>

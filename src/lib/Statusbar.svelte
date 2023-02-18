@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ConditionalDisplay from "./components/ConditionalDisplay.svelte";
 
-    export let mem = 0;
-    export let save_data_animation;
+	export let mem = 0;
+	export let save_data_animation;
 
 	function convertDataUnit(size, sourceUnit = "Byte", targetUnit = "YB") {
 		let i;
@@ -41,16 +41,14 @@
 		const roundedTempNumber = Math.round(tempNumber);
 		return roundedTempNumber / factor + " " + Object.keys(units)[i];
 	}
-
 </script>
 
 <div>
-    <ConditionalDisplay bind:save_data_animation />
-<div>
-    gespeicherte Daten im Browser:<span>&nbsp;{convertDataUnit(mem)}&nbsp;</span>
+	<ConditionalDisplay bind:save_data_animation />
+	<div>
+		gespeicherte Daten im Browser:<span>&nbsp;{convertDataUnit(mem)}&nbsp;</span>
+	</div>
 </div>
-</div>
-
 
 <style lang="scss">
 	@import "src/vars.scss";

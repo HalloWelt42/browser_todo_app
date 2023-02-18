@@ -3,11 +3,13 @@
 	import DropDownBadgeCategoryEdit from "./components/DropDownBadgeCategoryEdit.svelte";
 	import { EditActions } from "./model/EditActions";
 	import { textSanitizer } from "./helper/text_sanitizer";
+	import ConditionalDisplay from "./components/ConditionalDisplay.svelte";
 
 	export let item;
 
 	let css_class_danger = "";
 	let edit_mode = false;
+	let visible = false;
 
 	function init(element) {
 		element.focus();
@@ -44,6 +46,7 @@
 	function saveCategoryName(id: string, e) {
 		let text = textSanitizer(e.target.innerHTML, "Kategorie");
 		edit_mode = false;
+		visible = true;
 		$todo_manager.updateCategoryName(id, text);
 		$todo_manager = $todo_manager;
 	}
@@ -97,6 +100,7 @@
 			{item.name}
 		</button>
 	{/if}
+	<ConditionalDisplay bind:visible/>
 </div>
 
 <style lang="scss">

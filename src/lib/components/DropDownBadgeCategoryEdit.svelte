@@ -16,10 +16,10 @@
 </script>
 
 <div class="button-container">
-	<EditButton on:click={handleEditButton} />
+	<EditButton on:click={handleEditButton} title="Bezeichnung ändern" />
 </div>
 <div class="button-container">
-	<DeleteButton on:click={handleDeleteButton} />
+	<DeleteButton on:click={handleDeleteButton} title="Kategorie löschen" />
 </div>
 
 <style lang="scss">

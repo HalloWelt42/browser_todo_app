@@ -91,10 +91,7 @@
 
 	.categories-container {
 		display: flex;
-	}
-
-	.categories-container {
-		padding: 15px 0;
+		height: 80px;
 	}
 
 	.categories-container {

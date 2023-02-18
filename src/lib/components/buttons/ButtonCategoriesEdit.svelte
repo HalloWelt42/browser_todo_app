@@ -20,7 +20,7 @@
 </div>
 
 <style lang="scss">
-	.edit{
+	.edit {
 		margin-right: 20px;
 	}
 </style>

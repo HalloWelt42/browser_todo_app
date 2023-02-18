@@ -10,8 +10,8 @@
 	on:click
 	on:click={handleClick}
 	on:keypress={handleClick}
-	class="timer timer-icon fa-solid fa-play is-size-4"
-	title="Aufgabe starten" />
+	class="timer timer-icon fa-solid fa-circle-pause is-size-4"
+	title="Aufgabe pausieren" />
 
 <style lang="scss">
 	.timer {

@@ -1,18 +1,26 @@
 <script lang="ts">
 	import type { Todo } from "../../model/Todo";
-	import ButtonStartTimer from "../buttons/ButtonStartTimer.svelte";
+	import ButtonPauseTimer from "../buttons/ButtonPauseTimer.svelte";
 	import { todo_manager } from "../../todo_manager";
 	import { TimeFormat } from "../../helper/time_format";
+	import ButtonStartTimer from "../buttons/ButtonStartTimer.svelte";
 
 	export let item: Todo;
 	let state = true;
 	let time = 0;
 	let tick_time = duration(item.duration_time);
 
-	function handleClickToPause(item: Todo): void {
+	function handleClickToPause(item: Todo): null {
 		$todo_manager.setOpenStatus(item.id);
 		tick_intervall = null;
 		$todo_manager = $todo_manager;
+		return null;
+	}
+
+	function handleClickToStart(item: Todo): null {
+		$todo_manager.setInProgress(item.id);
+		$todo_manager = $todo_manager;
+		return null;
 	}
 
 	let tick_intervall = setInterval(() => {
@@ -29,11 +37,16 @@
 </script>
 
 <div class="timer">
-	{#if item.status !== "open" || item.duration_time}
-		<div><span class="time">{tick_time}</span></div>
+	<div>
+		<span class="time">
+			{tick_time}
+		</span>
+	</div>
+	{#if item.status === "open"}
+		<ButtonStartTimer on:click={handleClickToStart(item)} bind:state />
 	{/if}
 	{#if item.status === "in_progress"}
-		<ButtonStartTimer on:click={handleClickToPause(item)} bind:state />
+		<ButtonPauseTimer on:click={handleClickToPause(item)} bind:state />
 	{/if}
 </div>
 
@@ -43,7 +56,8 @@
 	}
 
 	.time {
-		margin-right: 0.5rem;
+		margin-right: 15px;
+		margin-left: 15px;
 		white-space: nowrap;
 	}
 </style>

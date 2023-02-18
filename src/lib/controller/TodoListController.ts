@@ -132,7 +132,7 @@ class TodoListController {
 
 		switch (status) {
 			case "open":
-				this.todos[index].status = "in_progress";
+				this.todos[index].status = "completed";
 				this.todos[index].start_time = new Date().getTime();
 				break;
 			case "in_progress":
@@ -154,6 +154,14 @@ class TodoListController {
 		this.todos[index].duration_time =
 			this.todos[index].duration_time + time - this.todos[index].start_time;
 		this.todos[index].start_time = time;
+	}
+
+	setInProgress(id: string): void {
+		const index = this.todos.findIndex((todo) => {
+			return todo.id === id;
+		});
+		this.todos[index].status = "in_progress";
+		this.todos[index].start_time = new Date().getTime();
 	}
 
 	setTodoPriority(id: string, priority: Priority): void {
@@ -205,7 +213,6 @@ class TodoListController {
 	}
 
 	saveTodo() {
-		
 		localStorage.setItem(
 			"todo",
 			JSON.stringify({

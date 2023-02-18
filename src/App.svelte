@@ -29,7 +29,7 @@
 	$: {
 		$todo_manager.saveTodo();
 		let old_mem = localStorage.getItem("todo").length;
-		if(old_mem !== mem){
+		if (old_mem !== mem) {
 			save_data_animation = true;
 		}
 		mem = old_mem;
@@ -56,7 +56,7 @@
 		</section>
 	</main>
 	<footer>
-		<Statusbar bind:mem bind:save_data_animation/>
+		<Statusbar bind:mem bind:save_data_animation />
 	</footer>
 </div>
 
@@ -85,7 +85,7 @@
 	.todo-list-wrapper {
 		display: flex;
 		justify-content: center;
-		margin-top: 80px;
+		margin-top: 40px;
 		margin-bottom: 54px;
 	}
 
@@ -96,7 +96,7 @@
 
 	.categories-container {
 		display: flex;
-		height: 80px;
+		height: 70px;
 	}
 
 	.categories-container {

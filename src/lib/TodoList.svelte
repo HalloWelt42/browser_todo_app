@@ -42,76 +42,117 @@
 			<ButtonFilterComplete />
 			<ButtonFilterArchiv />
 		</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th />
-					<th class="has-text-grey-light"
-						>insgesamt {$todo_manager.getTodos().length} Aufgaben vorhanden
-					</th>
-					<th />
-					<th />
-					<th />
-					<th />
-				</tr>
-			</thead>
-			{#each $todo_manager.getTodos() as item, index (item.id)}
-				<tr
-					animate:flip={{ duration: 300 }}
-					in:fly|local={{ x: -80, duration: 300 }}
-					out:fly|local={{ x: +80, duration: 300 }}>
-					{#if filter(item)}
-						<!-- status -->
-						<td on:click={() => switch_status(item.id)} on:keypress={() => switch_status(item.id)}>
-							{#if item.status === "open"}
-								<i class="open is-size-4 icon fa-regular fa-circle-check" />
-							{/if}
-							{#if item.status === "in_progress"}
-								<i class="in_progress is-size-4 has-text-info icon fa-solid fa-hourglass" />
-							{/if}
-							{#if item.status === "completed"}
-								<i class="completed is-size-4 has-text-success icon fa-solid fa-circle-check" />
-							{/if}
-							{#if item.status === "archived"}
-								<i class="archived is-size-4 has-text-grey icon fa-solid fa-box-archive" />
-							{/if}
-						</td>
-						<!-- toto name -->
-						<td class="todo">
-							<Todo {item} />
-						</td>
-						<td>
-							<StatStopTimer {item} />
-						</td>
-						<!-- categories edit -->
-						<td>
-							<DropDownCategoriesSelect {item} />
-						</td>
-						<!-- priorities switcher -->
-						<td>
-							<DropDownPrio {item} />
-						</td>
-						<!-- delete -->
-						<td
-							on:click={() => deleteTodo(item.id)}
-							on:click|stopPropagation
-							on:keypress={() => deleteTodo(item.id)}
-							on:click|stopPropagation>
-							<DeleteButton title="Aufgabe löschen" />
-						</td>
-					{/if}
-				</tr>
-			{/each}
-		</table>
+		<div class="table-container">
+			<table class="table">
+				<thead class="table-head">
+					<tr>
+						<th />
+						<th class="has-text-grey-light"
+							>insgesamt {$todo_manager.getTodos().length} Aufgaben vorhanden
+						</th>
+						<th />
+						<th />
+						<th />
+						<th />
+					</tr>
+				</thead>
+				{#each $todo_manager.getTodos() as item, index (item.id)}
+					<tr
+						animate:flip={{ duration: 300 }}
+						in:fly|local={{ x: -80, duration: 300 }}
+						out:fly|local={{ x: +80, duration: 300 }}>
+						{#if filter(item)}
+							<!-- status -->
+							<td
+								on:click={() => switch_status(item.id)}
+								on:keypress={() => switch_status(item.id)}>
+								{#if item.status === "open"}
+									<i class="open is-size-4 icon fa-regular fa-circle-check" />
+								{/if}
+								{#if item.status === "in_progress"}
+									<i class="in_progress is-size-4 has-text-info icon fa-solid fa-hourglass" />
+								{/if}
+								{#if item.status === "completed"}
+									<i class="completed is-size-4 has-text-success icon fa-solid fa-circle-check" />
+								{/if}
+								{#if item.status === "archived"}
+									<i class="archived is-size-4 has-text-grey icon fa-solid fa-box-archive" />
+								{/if}
+							</td>
+							<!-- toto name -->
+							<td class="todo">
+								<Todo {item} />
+							</td>
+							<td>
+								<StatStopTimer {item} />
+							</td>
+							<!-- categories edit -->
+							<td>
+								<DropDownCategoriesSelect {item} />
+							</td>
+							<!-- priorities switcher -->
+							<td>
+								<DropDownPrio {item} />
+							</td>
+							<!-- delete -->
+							<td
+								on:click={() => deleteTodo(item.id)}
+								on:click|stopPropagation
+								on:keypress={() => deleteTodo(item.id)}
+								on:click|stopPropagation>
+								<DeleteButton title="Aufgabe löschen" />
+							</td>
+						{/if}
+					</tr>
+				{/each}
+			</table>
+			<div class="blend" />
+		</div>
 	{/if}
 </div>
 
 <style lang="scss">
+	table,
+	th,
+	td {
+		border: none;
+		padding: 5px;
+	}
+
+	tr:hover {
+		background: hsla(0, 0%, 0%, 0.03);
+	}
+
+	.table-container {
+		overflow-y: scroll;
+		height: calc(100vh - 340px);
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.blend {
+		content: "";
+		z-index: 4;
+		position: sticky;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 120px;
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #fff 100%);
+	}
+
+	.table-head {
+		position: sticky;
+		top: 0;
+		background: #fff;
+		z-index: 1;
+	}
+
 	.todo-list {
 		width: 860px;
+
 		margin-left: 50px;
 		margin-right: 50px;
-		overflow-y: scroll;
 		height: calc(100vh - 387px);
 
 		.table {
@@ -138,5 +179,6 @@
 		justify-content: flex-end;
 		gap: 30px;
 		margin-top: 5px;
+		margin-right: 10px;
 	}
 </style>

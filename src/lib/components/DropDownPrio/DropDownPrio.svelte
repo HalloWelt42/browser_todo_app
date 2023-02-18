@@ -25,13 +25,13 @@
 	<!-- trigger -->
 	<div class="dropdown-trigger">
 		<button
-			class="button {item.priority} is-small is-rounded"
+			class="button {item.priority} is-small is-rounded has-text-grey"
 			aria-haspopup="true"
 			aria-controls="dropdown-menu"
 			on:click={toggle}
 			on:keypress={toggle}>
 			<span>Priorität</span>
-			<span class="icon is-small">
+			<span class="icon">
 				<i class="fas fa-angle-down" aria-hidden="true" />
 			</span>
 		</button>

@@ -110,21 +110,26 @@
 		display: flex;
 		align-items: center;
 	}
+
 	.category-button:hover ~ .badge,
 	.edit-badge:hover ~ .badge {
 		display: none;
 	}
+
 	.edit-badge {
 		display: none;
 	}
+
 	.category-button:hover ~ .edit-badge,
 	.edit-badge:hover {
 		display: flex;
 	}
+
 	.danger {
 		background: hsl(348, 86%, 43%);
 		color: #fff;
 	}
+
 	.badged-button-container .name-field {
 		min-width: 110px;
 		color: hsl(217deg, 71%, 53%);
@@ -132,6 +137,7 @@
 		border-color: black;
 		border-width: 2px;
 	}
+
 	.conditional-display-bl {
 		position: absolute;
 		right: -5px;

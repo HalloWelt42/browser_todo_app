@@ -36,25 +36,25 @@
 		const factor = Math.pow(10, 2);
 		const tempNumber = size * factor;
 		const roundedTempNumber = Math.round(tempNumber);
-		return roundedTempNumber / factor + ' ' + Object.keys(units)[i];
+		return roundedTempNumber / factor + " " + Object.keys(units)[i];
 	}
-
 </script>
-
 
 <div>gespeicherte Daten im Browser:<span>&nbsp;{convertDataUnit(mem)}&nbsp;</span></div>
 
 <style lang="scss">
-  @import "src/vars.scss";
-  div{
-    display: flex;
-    padding: 5px;
-    height: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    color: $icon-clicked;
-  }
-    span{
-      font-weight: bold;
-    }
+	@import "src/vars.scss";
+
+	div {
+		display: flex;
+		padding: 5px;
+		height: 100%;
+		align-items: center;
+		justify-content: flex-end;
+		color: $icon-clicked;
+	}
+
+	span {
+		font-weight: bold;
+	}
 </style>

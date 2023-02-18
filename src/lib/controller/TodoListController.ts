@@ -151,7 +151,8 @@ class TodoListController {
 		});
 		let time = new Date().getTime();
 		this.todos[index].status = "open";
-		this.todos[index].duration_time = this.todos[index].duration_time + time -this.todos[index].start_time;
+		this.todos[index].duration_time =
+			this.todos[index].duration_time + time - this.todos[index].start_time;
 		this.todos[index].start_time = time;
 	}
 

@@ -15,14 +15,14 @@
 	{#if $modus.todos_show_archived === true}
 		<i class="icon active fa-solid fa-box-archive">
 			{#if $todo_manager.getTodosCountStatus("archived") > 0}
-				<div class="my-badge">{$todo_manager.getTodosCountStatus("archived")}</div>
+				<div class="badge">{$todo_manager.getTodosCountStatus("archived")}</div>
 			{/if}
 		</i>
 	{/if}
 	{#if $modus.todos_show_archived === false}
 		<i class="icon fa-solid fa-box-archive">
 			{#if $todo_manager.getTodosCountStatus("archived") > 0}
-				<span class="my-badge">{$todo_manager.getTodosCountStatus("archived")}</span>
+				<span class="badge">{$todo_manager.getTodosCountStatus("archived")}</span>
 			{/if}
 		</i>
 	{/if}

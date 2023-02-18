@@ -15,14 +15,14 @@
 	{#if $modus.todos_show_in_progress === true}
 		<i class="icon active fa-solid fa-hourglass-half">
 			{#if $todo_manager.getTodosCountStatus("in_progress") > 0}
-				<div class="my-badge">{$todo_manager.getTodosCountStatus("in_progress")}</div>
+				<div class="badge">{$todo_manager.getTodosCountStatus("in_progress")}</div>
 			{/if}
 		</i>
 	{/if}
 	{#if $modus.todos_show_in_progress === false}
 		<i class="icon fa-solid fa-hourglass-half">
 			{#if $todo_manager.getTodosCountStatus("in_progress") > 0}
-				<div class="my-badge">{$todo_manager.getTodosCountStatus("in_progress")}</div>
+				<div class="badge">{$todo_manager.getTodosCountStatus("in_progress")}</div>
 			{/if}
 		</i>
 	{/if}

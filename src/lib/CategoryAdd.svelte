@@ -13,9 +13,9 @@
 </script>
 
 <div class="tool-container">
-	<div class="tool button is-white" on:click={addListItem} on:keypress={addListItem}>
+	<button class="tool button is-white" on:click={addListItem} on:keypress={addListItem}>
 		<i class="fas fa-plus icon is-size-4" /><span>neue Kategorie</span>
-	</div>
+	</button>
 </div>
 
 <style>

@@ -1,5 +1,4 @@
 import "bulma/css/bulma.css";
-import "@creativebulma/bulma-badge/dist/bulma-badge.css";
 import "./app.scss";
 import App from "./App.svelte";
 

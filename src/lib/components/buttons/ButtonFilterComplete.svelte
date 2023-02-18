@@ -15,14 +15,14 @@
 	{#if $modus.todos_show_completed === true}
 		<i class="icon active fa-solid fa-circle-check">
 			{#if $todo_manager.getTodosCountStatus("completed") > 0}
-				<div class="my-badge">{$todo_manager.getTodosCountStatus("completed")}</div>
+				<div class="badge">{$todo_manager.getTodosCountStatus("completed")}</div>
 			{/if}
 		</i>
 	{/if}
 	{#if $modus.todos_show_completed === false}
 		<i class="icon fa-solid fa-circle-check">
 			{#if $todo_manager.getTodosCountStatus("completed") > 0}
-				<div class="my-badge">{$todo_manager.getTodosCountStatus("completed")}</div>
+				<div class="badge">{$todo_manager.getTodosCountStatus("completed")}</div>
 			{/if}
 		</i>
 	{/if}

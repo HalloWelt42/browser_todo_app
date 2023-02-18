@@ -21,12 +21,6 @@
 
 <div class="tool-container">
 	<div class="button-container">
-		{#if $todo_manager.getCategoriesCount() === 0}
-			<button class="tool button is-white has-text-grey-light">
-				<i class="fas fa-plus icon is-size-4" />
-				<span>neue Aufgabe</span>
-			</button>
-		{/if}
 		{#if $todo_manager.getCategoriesCount() > 0}
 			<button class="tool button is-white" on:click={addTodo}>
 				<i class="fas fa-plus icon is-size-4" />
@@ -37,8 +31,12 @@
 	<div class="tool is-white has-text-grey">
 		{#if $todo_manager.getCategoriesCount() === 0}
 			{#if $todo_manager.categories.length === 0}
-				<span class="has-text-grey-dark"
-					>Legen Sie als erstes eine Kategorie an und wählen sie diese anschließend aus!</span>
+				<p class="has-text-grey-dark">
+					Bevor Sie eine <b>neue Aufgabe</b> anlegen können, legen Sie als erstes eine
+					<b>neue Kategorie</b>
+					an.<br />
+					Wählen Sie diese <b>Kategorie</b> anschließend aus!
+				</p>
 			{/if}
 			{#if $todo_manager.categories.length > 0}
 				<span class="has-text-grey-dark">Es muss mindestens eine Kategorie ausgewählt werden!</span>
@@ -60,5 +58,8 @@
 		align-items: center;
 		justify-content: center;
 		/*border: 1px solid red;*/
+	}
+
+	p {
 	}
 </style>

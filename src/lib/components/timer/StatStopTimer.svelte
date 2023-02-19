@@ -25,10 +25,10 @@
 
 	let tick_intervall = setInterval(() => {
 		if (item.status === "in_progress") {
-			time = item.duration_time + new Date().getTime() - item.start_time;
+			time = item.duration_time + (new Date().getTime() - item.start_time);
 			tick_time = duration(time);
 		}
-	}, 1000);
+	}, 200);
 
 	function duration(time) {
 		const current_time = new TimeFormat(time);

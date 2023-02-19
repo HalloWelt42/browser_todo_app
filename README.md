@@ -5,7 +5,7 @@ Alle Einträge, werden dauerhaft im LocaleStorage des Browsers gespeichert.
 ### *hier ausprobieren!*
 * live Demo : [... netlify.app](https://browser-todo-app.netlify.app/)
 
-![screen_2023-02-03.png](public/screen_2023-02-03.png)
+![screen_2023-02-03.png](public/screen_2023-02-19.png)
 
 
 ### aktuelle Features
